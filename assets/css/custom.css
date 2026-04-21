@@ -1,0 +1,15 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.text-white\/70 {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+a, button {
+  transition: all 0.2s ease;
+}
+
+section[id] {
+  scroll-margin-top: 80px;
+}
