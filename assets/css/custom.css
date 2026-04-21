@@ -1,15 +1,106 @@
+/* assets/css/custom.css */
+
+:root {
+  --primary: #d44e72;     /* Rosa queimado principal */
+  --primary-light: #e57a95;
+  --primary-dark: #a63655;
+  --accent: #f4a261;      /* Laranja suave para detalhes */
+  --bg-light: #fdfbf9;    /* Fundo claro e acolhedor */
+  --text-dark: #3a2e33;   /* Texto escuro e suave */
+  --text-soft: #6b5b62;   /* Texto secundário */
+  --card-bg: #ffffff;
+  --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --border-light: 1px solid rgba(0, 0, 0, 0.04);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-.text-white\/70 {
-  color: rgba(255, 255, 255, 0.7);
+body {
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-a, button {
-  transition: all 0.2s ease;
+/* Cards com fundo branco e sombra suave */
+.glass-card {
+  background: var(--card-bg);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: var(--border-light);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
 }
 
+/* Ajuste para o header fixo não cobrir âncoras */
 section[id] {
   scroll-margin-top: 80px;
+}
+
+/* Botões */
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border-radius: 40px;
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 8px rgba(212, 78, 114, 0.15);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(212, 78, 114, 0.25);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1.5px solid var(--primary-light);
+  color: var(--primary);
+  border-radius: 40px;
+  padding: 0.75rem 2rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.btn-outline:hover {
+  background: rgba(212, 78, 114, 0.04);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+/* Gradientes e bordas */
+.gradient-border {
+  position: relative;
+  background: var(--card-bg);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+/* Textos */
+.text-white\/70 {
+  color: var(--text-soft);
+}
+
+.text-white\/80 {
+  color: var(--text-soft);
+}
+
+/* Links do menu */
+nav a {
+  color: var(--text-dark);
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: var(--primary);
+  opacity: 1;
+}
+
+/* Ícones */
+.fa-star {
+  color: #f4a261;
 }
