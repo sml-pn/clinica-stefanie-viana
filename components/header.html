@@ -1,0 +1,37 @@
+<!-- Header com glass effect estilo Meta -->
+<div class="header-glass sticky top-0 z-50 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-5 flex items-center justify-between h-20">
+    <div class="flex items-center gap-3">
+      <img src="assets/img/logo.jpg" alt="Logo" class="w-11 h-11 rounded-xl object-cover">
+      <div>
+        <div class="font-['Playfair_Display'] text-xl font-bold"><span class="text-[#c44569]">Stefanie</span> Viana</div>
+        <div class="text-xs uppercase tracking-wider text-[#c44569] font-medium">Saúde da Mulher</div>
+      </div>
+    </div>
+    
+    <nav class="hidden md:flex items-center gap-8">
+      <a href="#home" class="text-sm font-medium text-gray-700 hover:text-[#c44569] transition">Início</a>
+      <a href="#servicos" class="text-sm font-medium text-gray-700 hover:text-[#c44569] transition">Serviços</a>
+      <a href="#destaque" class="text-sm font-medium text-gray-700 hover:text-[#c44569] transition">Destaque</a>
+      <a href="#avaliacoes" class="text-sm font-medium text-gray-700 hover:text-[#c44569] transition">Avaliações</a>
+      <a href="#sobre" class="text-sm font-medium text-gray-700 hover:text-[#c44569] transition">Sobre</a>
+      <a href="#localizacao" class="text-sm font-medium text-gray-700 hover:text-[#c44569] transition">Localização</a>
+    </nav>
+    
+    <button id="hamburger" class="md:hidden flex flex-col gap-1 p-2 z-50">
+      <span class="w-6 h-0.5 bg-[#c44569] transition"></span>
+      <span class="w-6 h-0.5 bg-[#c44569] transition"></span>
+      <span class="w-6 h-0.5 bg-[#c44569] transition"></span>
+    </button>
+  </div>
+  
+  <!-- Mobile Menu Overlay -->
+  <div id="mobileMenu" class="fixed top-0 right-0 w-64 h-full bg-white shadow-2xl transform translate-x-full transition-transform duration-300 md:hidden pt-24 px-6 flex flex-col gap-6 z-40">
+    <a href="#home" class="text-lg font-medium">Início</a>
+    <a href="#servicos" class="text-lg font-medium">Serviços</a>
+    <a href="#destaque" class="text-lg font-medium">Destaque</a>
+    <a href="#avaliacoes" class="text-lg font-medium">Avaliações</a>
+    <a href="#sobre" class="text-lg font-medium">Sobre</a>
+    <a href="#localizacao" class="text-lg font-medium">Localização</a>
+  </div>
+</div>
