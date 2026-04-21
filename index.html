@@ -3,132 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Clínica Stefanie Viana · Saúde da Mulher</title>
-  <meta name="description" content="Clínica Stefanie Viana · Ginecologia, obstetrícia, exames e ultrassom em Trairi-CE.">
-  
-  <!-- Fonts + Ícones + Swiper + Tailwind -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Montserrat:wght@600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <title>Clínica Stefanie Viana | Saúde da Mulher em Trairi</title>
+  <meta name="description" content="Ginecologia, obstetrícia, exames e ultrassom em Trairi-CE. Atendimento humanizado.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <style>
-    @keyframes scrollBanner { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-    .animate-scroll { animation: scrollBanner 25s linear infinite; display: inline-block; white-space: nowrap; }
-    .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.6s, transform 0.6s; }
-    .fade-up.show { opacity: 1; transform: translateY(0); }
-    .header-glass { backdrop-filter: blur(12px); background: rgba(255,255,255,0.85); border-bottom: 1px solid rgba(0,0,0,0.05); }
-    .swiper-button-prev, .swiper-button-next { color: #c44569 !important; background: white; width: 40px !important; height: 40px !important; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
-    .swiper-button-prev:after, .swiper-button-next:after { font-size: 1.2rem !important; }
-    .swiper-pagination-bullet-active { background: #c44569 !important; }
-  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bg-white font-['Inter'] text-gray-800">
-
-<!-- Banner rolante -->
-<div id="topBanner" class="bg-gradient-to-r from-[#ff8c42] to-[#ffb347] text-white py-3 relative overflow-hidden text-sm">
-  <div class="animate-scroll">
-    <span class="inline-block mr-0"><i class="fas fa-exclamation-triangle mr-2"></i> SITE NÃO OFICIAL · APENAS DEMONSTRAÇÃO ·</span>
-    <span class="inline-block mr-0"><i class="fas fa-exclamation-triangle mr-2"></i> SITE NÃO OFICIAL · APENAS DEMONSTRAÇÃO ·</span>
-    <span class="inline-block mr-0"><i class="fas fa-exclamation-triangle mr-2"></i> SITE NÃO OFICIAL · APENAS DEMONSTRAÇÃO ·</span>
-    <span class="inline-block mr-0"><i class="fas fa-exclamation-triangle mr-2"></i> SITE NÃO OFICIAL · APENAS DEMONSTRAÇÃO ·</span>
+<body>
+  <div class="top-banner" id="topBanner">
+    <div class="banner-scroll">
+      <span><i class="fas fa-info-circle"></i> Site não oficial · Apenas demonstração ·</span>
+      <span><i class="fas fa-info-circle"></i> Site não oficial · Apenas demonstração ·</span>
+      <span><i class="fas fa-info-circle"></i> Site não oficial · Apenas demonstração ·</span>
+      <span><i class="fas fa-info-circle"></i> Site não oficial · Apenas demonstração ·</span>
+    </div>
+    <button class="banner-close" id="closeBanner"><i class="fas fa-times"></i></button>
   </div>
-  <button id="closeBanner" class="absolute right-5 top-1/2 -translate-y-1/2 bg-white/20 w-8 h-8 rounded-full flex items-center justify-center text-white hover:bg-white/30"><i class="fas fa-times"></i></button>
-</div>
-
-<!-- CONTÊINERES PARA OS COMPONENTES -->
-<div id="header-container"></div>
-<div id="hero-container"></div>
-<div id="servicos-container"></div>
-<div id="destaque-container"></div>
-<div id="avaliacoes-container"></div>
-<div id="sobre-container"></div>
-<div id="localizacao-container"></div>
-<div id="footer-container"></div>
-
-<!-- WhatsApp Flutuante -->
-<a href="https://wa.me/558581497934" target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl shadow-lg hover:scale-110 transition z-50">
-  <i class="fab fa-whatsapp"></i>
-</a>
-
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  // Carregar componentes dinamicamente
-  async function loadComponent(id, file) {
-    const container = document.getElementById(id);
-    if (container) {
-      const res = await fetch(`components/${file}`);
-      const html = await res.text();
-      container.innerHTML = html;
-    }
-  }
-
-  async function loadAll() {
-    await loadComponent('header-container', 'header.html');
-    await loadComponent('hero-container', 'hero.html');
-    await loadComponent('servicos-container', 'servicos.html');
-    await loadComponent('destaque-container', 'destaque.html');
-    await loadComponent('avaliacoes-container', 'avaliacoes.html');
-    await loadComponent('sobre-container', 'sobre.html');
-    await loadComponent('localizacao-container', 'localizacao.html');
-    await loadComponent('footer-container', 'footer.html');
-    
-    // Inicializar interações depois que tudo foi carregado
-    initInteractions();
-  }
-
-  function initInteractions() {
-    // Fechar banner
-    document.getElementById('closeBanner')?.addEventListener('click', () => {
-      document.getElementById('topBanner').classList.add('hidden');
-    });
-
-    // Menu mobile (hamburger)
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (hamburger && mobileMenu) {
-      hamburger.addEventListener('click', () => {
-        mobileMenu.classList.toggle('translate-x-full');
-        hamburger.classList.toggle('active');
-      });
-      document.querySelectorAll('#mobileMenu a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.add('translate-x-full');
-          hamburger.classList.remove('active');
-        });
-      });
-    }
-
-    // Swiper (avaliações)
-    if (typeof Swiper !== 'undefined') {
-      new Swiper('.swiper', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        autoplay: { delay: 4000 },
-        pagination: { el: '.swiper-pagination', clickable: true },
-        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-        breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
-      });
-    }
-
-    // Fade-up ao rolar
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => e.isIntersecting && e.target.classList.add('show'));
-    }, { threshold: 0.2 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-    // Scroll suave
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-  }
-
-  loadAll();
-</script>
+  <div id="header-container"></div>
+  <main>
+    <div id="hero-container"></div>
+    <div id="servicos-container"></div>
+    <div id="destaque-container"></div>
+    <div id="avaliacoes-container"></div>
+    <div id="sobre-container"></div>
+    <div id="localizacao-container"></div>
+  </main>
+  <div id="footer-container"></div>
+  <a href="https://wa.me/558581497934" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
+</html>
