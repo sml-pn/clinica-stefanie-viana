@@ -129,15 +129,45 @@
     </div>
   </section>
 
-  <!-- INSTAGRAM -->
+  <!-- INSTAGRAM (WIDGET FOUITA POSICIONADO CORRETAMENTE) -->
   <section id="instagram" class="my-20">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nosso Instagram</h2>
     <p class="text-[#6b5b62] text-center mb-8">Fique por dentro das novidades da clínica</p>
-    <div class="max-w-6xl mx-auto" style="min-height: 300px;">
-      <!-- O script do Fouita criará o widget aqui -->
+    
+    <div class="max-w-6xl mx-auto" style="min-height: 300px;" id="instagram-widget-container">
+      <!-- O script abaixo insere o widget exatamente dentro deste container -->
+      <script>
+        (function() {
+          // Evita duplicação
+          if (document.querySelector('#ftwy4tsw')) return;
+          
+          // Cria a div do widget
+          var widgetDiv = document.createElement('div');
+          widgetDiv.setAttribute('key', 'Clínica Stefanie Viana ');
+          widgetDiv.setAttribute('class', 'ft');
+          widgetDiv.setAttribute('id', 'ftwy4tsw');
+          
+          // Encontra o container específico da seção Instagram
+          var container = document.querySelector('#instagram-widget-container');
+          if (container) {
+            container.appendChild(widgetDiv);
+          } else {
+            // Fallback: se não achar, insere no body (mas não deve acontecer)
+            document.body.appendChild(widgetDiv);
+          }
+          
+          // Carrega o script do Fouita
+          var script = document.createElement('script');
+          script.setAttribute('src', 'https://wdg.fouita.com/widgets/0x4329d2.js');
+          widgetDiv.appendChild(script);
+        })();
+      </script>
     </div>
+    
     <div class="text-center mt-6">
-      <a href="https://www.instagram.com/clinicastefanieviana/" target="_blank" class="btn-outline"><i class="fab fa-instagram mr-2"></i> Seguir no Instagram</a>
+      <a href="https://www.instagram.com/clinicastefanieviana/" target="_blank" class="btn-outline">
+        <i class="fab fa-instagram mr-2"></i> Seguir no Instagram
+      </a>
     </div>
   </section>
 
@@ -181,20 +211,6 @@
   document.querySelectorAll('#mobile-menu a').forEach(link => {
     link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
   });
-</script>
-
-<!-- SCRIPT DO FOUITA - WIDGET DO INSTAGRAM (FUNCIONANDO) -->
-<script>
-  if (!document.querySelector('#ftwy4tsw')) {
-    var newDiv = document.createElement('div');
-    newDiv.setAttribute('key', 'Clínica Stefanie Viana ');
-    newDiv.setAttribute('class', 'ft');
-    newDiv.setAttribute('id', 'ftwy4tsw');
-    var newScript = document.createElement('script');
-    newScript.setAttribute('src', 'https://wdg.fouita.com/widgets/0x4329d2.js');
-    newDiv.appendChild(newScript);
-    document.body.appendChild(newDiv);
-  }
 </script>
 
 </body>
