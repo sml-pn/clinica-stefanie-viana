@@ -72,7 +72,7 @@
     </div>
   </section>
 
-  <!-- BANNER -->
+  <!-- BANNER PROMOCIONAL -->
   <section class="my-12">
     <div class="gradient-border p-0.5 rounded-[28px]">
       <div class="bg-white rounded-[28px] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between">
@@ -129,12 +129,12 @@
     </div>
   </section>
 
-  <!-- INSTAGRAM (container vazio onde o widget será injetado) -->
+  <!-- INSTAGRAM -->
   <section id="instagram" class="my-20">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nosso Instagram</h2>
     <p class="text-[#6b5b62] text-center mb-8">Fique por dentro das novidades da clínica</p>
     <div class="max-w-6xl mx-auto" style="min-height: 300px;">
-      <!-- O script do Fouita vai inserir o widget aqui automaticamente -->
+      <!-- O script do Fouita criará o widget aqui -->
     </div>
     <div class="text-center mt-6">
       <a href="https://www.instagram.com/clinicastefanieviana/" target="_blank" class="btn-outline"><i class="fab fa-instagram mr-2"></i> Seguir no Instagram</a>
@@ -173,10 +173,8 @@
   <div class="text-center text-[#6b5b62] text-xs mt-8 opacity-60">© 2026 Clínica Stefanie Viana · Todos os direitos reservados</div>
 </footer>
 
-<!-- Scripts locais -->
 <script src="assets/js/main.js"></script>
 <script>
-  // Menu mobile
   document.getElementById('menu-toggle').addEventListener('click', function(){
     document.getElementById('mobile-menu').classList.toggle('hidden');
   });
@@ -185,7 +183,7 @@
   });
 </script>
 
-<!-- SCRIPT DO FOUITA (COLOCADO FORA DE QUALQUER CONTAINER, NO FINAL DO BODY) -->
+<!-- SCRIPT DO FOUITA - WIDGET DO INSTAGRAM (FUNCIONANDO) -->
 <script>
   if (!document.querySelector('#ftwy4tsw')) {
     var newDiv = document.createElement('div');
@@ -198,19 +196,6 @@
     document.body.appendChild(newDiv);
   }
 </script>
-
-<!-- ALTERNATIVA: Se o widget não aparecer, descomente o iframe abaixo e comente o script acima -->
-<!--
-<div style="max-width: 100%; margin: 0 auto;">
-  <iframe src="https://emb.fouita.com/widget/0x4329d2/ftwy4tsw" 
-          title="Clínica Stefanie Viana" 
-          width="100%" 
-          height="600" 
-          frameborder="0" 
-          style="border-radius: 16px; display: block;">
-  </iframe>
-</div>
--->
 
 </body>
 </html>
