@@ -4,91 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clínica Stefanie Viana · Saúde da Mulher em Trairi-CE</title>
-  <!-- Tailwind CSS via CDN -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome (ícones) -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
   <!-- CSS customizado -->
   <link rel="stylesheet" href="assets/css/custom.css">
   <style>
-    /* Estilos base sobrescrevendo o Tailwind */
-    body {
-      background-color: #fdfbf9;
-      color: #3a2e33;
-    }
-    .glass-card {
-      background: white;
-      border-radius: 28px;
-      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-    }
-    .gradient-border {
-      background: white;
-      border-radius: 28px;
-      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-    }
-    .btn-primary {
-      background: #d44e72;
-      color: white;
-      border-radius: 40px;
-      padding: 0.75rem 2rem;
-      font-weight: 500;
-      transition: all 0.25s;
-    }
-    .btn-primary:hover {
-      background: #a63655;
-      transform: translateY(-2px);
-    }
-    .btn-outline {
-      background: transparent;
-      border: 1.5px solid #e57a95;
-      color: #d44e72;
-      border-radius: 40px;
-      padding: 0.75rem 2rem;
-      font-weight: 500;
-      transition: all 0.25s;
-    }
-    .btn-outline:hover {
-      background: rgba(212, 78, 114, 0.04);
-      border-color: #d44e72;
-    }
-    nav a {
-      color: #3a2e33;
-      opacity: 0.8;
-    }
-    nav a:hover {
-      color: #d44e72;
-      opacity: 1;
-    }
+    body { background-color: #fdfbf9; color: #3a2e33; }
+    .glass-card { background: white; border-radius: 28px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
+    .gradient-border { background: white; border-radius: 28px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
+    .btn-primary { background: #d44e72; color: white; border-radius: 40px; padding: 0.75rem 2rem; font-weight: 500; transition: all 0.25s; }
+    .btn-primary:hover { background: #a63655; transform: translateY(-2px); }
+    .btn-outline { background: transparent; border: 1.5px solid #e57a95; color: #d44e72; border-radius: 40px; padding: 0.75rem 2rem; font-weight: 500; transition: all 0.25s; }
+    .btn-outline:hover { background: rgba(212,78,114,0.04); border-color: #d44e72; }
+    nav a { color: #3a2e33; opacity: 0.8; }
+    nav a:hover { color: #d44e72; opacity: 1; }
   </style>
 </head>
 <body class="antialiased">
 
-<!-- ===== HEADER ===== -->
+<!-- HEADER -->
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
-    <div class="text-2xl font-bold tracking-tight">
-      <span class="text-[#d44e72]">Clínica</span> Stefanie Viana
-    </div>
+    <div class="text-2xl font-bold tracking-tight"><span class="text-[#d44e72]">Clínica</span> Stefanie Viana</div>
     <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
-      <a href="#inicio" class="hover:text-[#d44e72] transition">Início</a>
-      <a href="#servicos" class="hover:text-[#d44e72] transition">Serviços</a>
-      <a href="#destaque" class="hover:text-[#d44e72] transition">Destaque</a>
-      <a href="#avaliacoes" class="hover:text-[#d44e72] transition">Avaliações</a>
-      <a href="#instagram" class="hover:text-[#d44e72] transition">Instagram</a>
-      <a href="#sobre" class="hover:text-[#d44e72] transition">Sobre</a>
-      <a href="#localizacao" class="hover:text-[#d44e72] transition">Localização</a>
+      <a href="#inicio" class="hover:text-[#d44e72]">Início</a>
+      <a href="#servicos" class="hover:text-[#d44e72]">Serviços</a>
+      <a href="#destaque" class="hover:text-[#d44e72]">Destaque</a>
+      <a href="#avaliacoes" class="hover:text-[#d44e72]">Avaliações</a>
+      <a href="#instagram" class="hover:text-[#d44e72]">Instagram</a>
+      <a href="#sobre" class="hover:text-[#d44e72]">Sobre</a>
+      <a href="#localizacao" class="hover:text-[#d44e72]">Localização</a>
     </nav>
     <div class="flex items-center gap-3">
-      <a href="https://wa.me/5585981497934" target="_blank" class="hidden md:block btn-primary text-sm !py-2 !px-5">
-        Agendar <i class="fab fa-whatsapp ml-2"></i>
-      </a>
-      <button id="menu-toggle" class="md:hidden text-2xl text-[#3a2e33]">
-        <i class="fas fa-bars"></i>
-      </button>
+      <a href="https://wa.me/5585981497934" class="hidden md:block btn-primary text-sm !py-2 !px-5">Agendar <i class="fab fa-whatsapp ml-2"></i></a>
+      <button id="menu-toggle" class="md:hidden text-2xl text-[#3a2e33]"><i class="fas fa-bars"></i></button>
     </div>
   </div>
   <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2 flex flex-col space-y-3 text-sm">
@@ -99,9 +52,7 @@
     <a href="#instagram" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Instagram</a>
     <a href="#sobre" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Sobre</a>
     <a href="#localizacao" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Localização</a>
-    <a href="https://wa.me/5585981497934" class="btn-primary text-center !py-2 mt-2">
-      Agendar pelo WhatsApp
-    </a>
+    <a href="https://wa.me/5585981497934" class="btn-primary text-center !py-2 mt-2">Agendar pelo WhatsApp</a>
   </div>
 </header>
 
@@ -109,28 +60,23 @@
 
 <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
 
-  <!-- ===== HERO ===== -->
+  <!-- HERO -->
   <section id="inicio" class="my-12 md:my-20 text-center">
     <div class="glass-card p-8 md:p-16 rounded-3xl bg-gradient-to-br from-[#fdfbf9] to-[#f7f2ed]">
       <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 max-w-4xl mx-auto text-[#3a2e33]">
-        <span class="text-[#d44e72]">Saúde da Mulher</span>
-        <br>com acolhimento e excelência
+        <span class="text-[#d44e72]">Saúde da Mulher</span><br>com acolhimento e excelência
       </h1>
       <p class="text-lg md:text-xl text-[#6b5b62] mb-8 max-w-2xl mx-auto">
-        Descubra um cuidado inovador que transforma sua experiência de bem-estar e conexão com seu corpo.
+        Descubra um cuidado inovador que transforma sua experiência de bem-estar.
       </p>
       <div class="flex flex-wrap justify-center gap-4">
-        <a href="https://wa.me/5585981497934" class="btn-primary text-lg">
-          Agende sua consulta <i class="fas fa-arrow-right ml-2"></i>
-        </a>
-        <a href="#servicos" class="btn-outline text-lg">
-          Ver todos os serviços
-        </a>
+        <a href="https://wa.me/5585981497934" class="btn-primary text-lg">Agende sua consulta <i class="fas fa-arrow-right ml-2"></i></a>
+        <a href="#servicos" class="btn-outline text-lg">Ver todos os serviços</a>
       </div>
     </div>
   </section>
 
-  <!-- ===== BANNER PROMOCIONAL ===== -->
+  <!-- BANNER -->
   <section class="my-12">
     <div class="gradient-border p-0.5 rounded-[28px]">
       <div class="bg-white rounded-[28px] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between">
@@ -140,267 +86,116 @@
           <p class="text-[#6b5b62] mt-2">Dr. Jelson Batista · Clínico Geral CRM 21146</p>
         </div>
         <div class="flex gap-3">
-          <a href="#destaque" class="btn-outline !py-2 !px-6">
-            Saiba mais
-          </a>
-          <a href="https://wa.me/5585981497934" class="btn-primary !py-2 !px-6">
-            Agendar agora
-          </a>
+          <a href="#destaque" class="btn-outline !py-2 !px-6">Saiba mais</a>
+          <a href="https://wa.me/5585981497934" class="btn-primary !py-2 !px-6">Agendar agora</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== SEÇÃO DE SERVIÇOS ===== -->
+  <!-- SERVIÇOS -->
   <section id="servicos" class="my-20">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nossos Serviços</h2>
-    <p class="text-[#6b5b62] text-center mb-12 max-w-2xl mx-auto">Cuidado integral para todas as fases da vida da mulher</p>
-    
+    <p class="text-[#6b5b62] text-center mb-12">Cuidado integral para todas as fases da vida da mulher</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <!-- Card Consultas -->
-      <div class="glass-card p-6">
-        <div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4">
-          <i class="fas fa-stethoscope text-[#d44e72] text-xl"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2 text-[#3a2e33]">Consultas</h3>
-        <ul class="text-[#6b5b62] space-y-2 text-sm">
-          <li>• Ginecologia</li>
-          <li>• Obstetrícia</li>
-          <li>• Pré-natal</li>
-          <li>• Planejamento familiar</li>
-        </ul>
-      </div>
-      
-      <!-- Card Exames -->
-      <div class="glass-card p-6">
-        <div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4">
-          <i class="fas fa-microscope text-[#d44e72] text-xl"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2 text-[#3a2e33]">Exames</h3>
-        <ul class="text-[#6b5b62] space-y-2 text-sm">
-          <li>• Ultrassom</li>
-          <li>• Papanicolau</li>
-          <li>• Colposcopia</li>
-          <li>• Laboratoriais</li>
-        </ul>
-      </div>
-      
-      <!-- Card Procedimentos -->
-      <div class="glass-card p-6">
-        <div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4">
-          <i class="fas fa-syringe text-[#d44e72] text-xl"></i>
-        </div>
-        <h3 class="text-xl font-semibold mb-2 text-[#3a2e33]">Procedimentos</h3>
-        <ul class="text-[#6b5b62] space-y-2 text-sm">
-          <li>• Inserção de DIU</li>
-          <li>• Implante hormonal</li>
-          <li>• Pequenas cirurgias</li>
-          <li>• Biópsia</li>
-        </ul>
-      </div>
+      <div class="glass-card p-6"><div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-stethoscope text-[#d44e72] text-xl"></i></div><h3 class="text-xl font-semibold mb-2">Consultas</h3><ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Ginecologia</li><li>• Obstetrícia</li><li>• Pré-natal</li><li>• Planejamento familiar</li></ul></div>
+      <div class="glass-card p-6"><div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-microscope text-[#d44e72] text-xl"></i></div><h3 class="text-xl font-semibold mb-2">Exames</h3><ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Ultrassom</li><li>• Papanicolau</li><li>• Colposcopia</li><li>• Laboratoriais</li></ul></div>
+      <div class="glass-card p-6"><div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-syringe text-[#d44e72] text-xl"></i></div><h3 class="text-xl font-semibold mb-2">Procedimentos</h3><ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Inserção de DIU</li><li>• Implante hormonal</li><li>• Pequenas cirurgias</li><li>• Biópsia</li></ul></div>
     </div>
   </section>
 
-  <!-- ===== DESTAQUE DA SEMANA (Dr. Jelson) ===== -->
+  <!-- DESTAQUE -->
   <section id="destaque" class="my-20">
     <div class="glass-card p-8 md:p-10">
       <div class="flex flex-col md:flex-row gap-8 items-center">
         <div class="md:w-1/2">
           <span class="text-sm font-semibold uppercase tracking-wider text-[#d44e72]">Destaque da Semana</span>
-          <h2 class="text-3xl md:text-4xl font-bold mt-2 text-[#3a2e33]">Dr. Jelson Batista</h2>
+          <h2 class="text-3xl md:text-4xl font-bold mt-2">Dr. Jelson Batista</h2>
           <p class="text-[#6b5b62] mt-1 text-lg">Clínico Geral · CRM 21146</p>
           <div class="mt-6 grid grid-cols-2 gap-3 text-sm">
-            <span class="bg-[#d44e72]/5 text-[#3a2e33] rounded-full px-4 py-2 text-center">Check-up</span>
-            <span class="bg-[#d44e72]/5 text-[#3a2e33] rounded-full px-4 py-2 text-center">Obesidade</span>
-            <span class="bg-[#d44e72]/5 text-[#3a2e33] rounded-full px-4 py-2 text-center">Hipertensão</span>
-            <span class="bg-[#d44e72]/5 text-[#3a2e33] rounded-full px-4 py-2 text-center">Diabetes</span>
-            <span class="bg-[#d44e72]/5 text-[#3a2e33] rounded-full px-4 py-2 text-center">Colesterol</span>
-            <span class="bg-[#d44e72]/5 text-[#3a2e33] rounded-full px-4 py-2 text-center">Gastrite</span>
+            <span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Check-up</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Obesidade</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Hipertensão</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Diabetes</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Colesterol</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Gastrite</span>
           </div>
-          <a href="https://wa.me/5585981497934" class="btn-primary inline-block mt-8">
-            Agendar com Dr. Jelson <i class="fab fa-whatsapp ml-2"></i>
-          </a>
+          <a href="https://wa.me/5585981497934" class="btn-primary inline-block mt-8">Agendar com Dr. Jelson <i class="fab fa-whatsapp ml-2"></i></a>
         </div>
-        <div class="md:w-1/2 flex justify-center">
-          <div class="w-48 h-48 rounded-full bg-gradient-to-br from-[#d44e72]/20 to-[#f4a261]/20 flex items-center justify-center border-2 border-[#d44e72]/20">
-            <i class="fas fa-user-md text-7xl text-[#d44e72]"></i>
-          </div>
-        </div>
+        <div class="md:w-1/2 flex justify-center"><div class="w-48 h-48 rounded-full bg-gradient-to-br from-[#d44e72]/20 to-[#f4a261]/20 flex items-center justify-center border-2 border-[#d44e72]/20"><i class="fas fa-user-md text-7xl text-[#d44e72]"></i></div></div>
       </div>
     </div>
   </section>
 
-  <!-- ===== AVALIAÇÕES ===== -->
+  <!-- AVALIAÇÕES -->
   <section id="avaliacoes" class="my-20">
-    <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">O que dizem nossas pacientes</h2>
+    <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center">O que dizem nossas pacientes</h2>
     <p class="text-[#6b5b62] text-center mb-12">Depoimentos de quem confia na Clínica Stefanie Viana</p>
-    
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="glass-card p-6">
-        <div class="flex items-center gap-1 text-[#f4a261] mb-3">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="text-[#3a2e33] italic mb-4">"Atendimento maravilhoso, a Dra. Stefanie é super atenciosa!"</p>
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-full bg-[#d44e72]/20 flex items-center justify-center text-[#d44e72] font-bold">AP</div>
-          <div>
-            <p class="font-medium text-[#3a2e33]">Ana Paula</p>
-            <p class="text-xs text-[#6b5b62]">2 semanas atrás</p>
-          </div>
-        </div>
-      </div>
-      <div class="glass-card p-6">
-        <div class="flex items-center gap-1 text-[#f4a261] mb-3">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="text-[#3a2e33] italic mb-4">"Clínica muito limpa e organizada. Fiz meu pré-natal todo aqui!"</p>
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-full bg-[#d44e72]/20 flex items-center justify-center text-[#d44e72] font-bold">CS</div>
-          <div>
-            <p class="font-medium text-[#3a2e33]">Camila Sousa</p>
-            <p class="text-xs text-[#6b5b62]">1 mês atrás</p>
-          </div>
-        </div>
-      </div>
-      <div class="glass-card p-6">
-        <div class="flex items-center gap-1 text-[#f4a261] mb-3">
-          <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-        </div>
-        <p class="text-[#3a2e33] italic mb-4">"Excelente profissional, muito competente e humana."</p>
-        <div class="flex items-center gap-3">
-          <div class="w-8 h-8 rounded-full bg-[#d44e72]/20 flex items-center justify-center text-[#d44e72] font-bold">MC</div>
-          <div>
-            <p class="font-medium text-[#3a2e33]">Maria do Carmo</p>
-            <p class="text-xs text-[#6b5b62]">3 meses atrás</p>
-          </div>
-        </div>
-      </div>
+      <div class="glass-card p-6"><div class="flex items-center gap-1 text-[#f4a261] mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-[#3a2e33] italic mb-4">"Atendimento maravilhoso, a Dra. Stefanie é super atenciosa!"</p><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-[#d44e72]/20 flex items-center justify-center text-[#d44e72] font-bold">AP</div><div><p class="font-medium">Ana Paula</p><p class="text-xs text-[#6b5b62]">2 semanas atrás</p></div></div></div>
+      <div class="glass-card p-6"><div class="flex items-center gap-1 text-[#f4a261] mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-[#3a2e33] italic mb-4">"Clínica muito limpa e organizada. Fiz meu pré-natal todo aqui!"</p><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-[#d44e72]/20 flex items-center justify-center text-[#d44e72] font-bold">CS</div><div><p class="font-medium">Camila Sousa</p><p class="text-xs text-[#6b5b62]">1 mês atrás</p></div></div></div>
+      <div class="glass-card p-6"><div class="flex items-center gap-1 text-[#f4a261] mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-[#3a2e33] italic mb-4">"Excelente profissional, muito competente e humana."</p><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-[#d44e72]/20 flex items-center justify-center text-[#d44e72] font-bold">MC</div><div><p class="font-medium">Maria do Carmo</p><p class="text-xs text-[#6b5b62]">3 meses atrás</p></div></div></div>
     </div>
   </section>
 
-  <!-- ===== FEED DO INSTAGRAM (CARROSSEL FOUITA) ===== -->
+  <!-- INSTAGRAM (FOUITA COM SCRIPT FORNECIDO) -->
   <section id="instagram" class="my-20">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nosso Instagram</h2>
     <p class="text-[#6b5b62] text-center mb-8">Fique por dentro das novidades da clínica</p>
-    
     <div class="max-w-6xl mx-auto" style="min-height: 300px;">
-      <!-- Widget Fouita - Clínica Stefanie Viana (código corrigido) -->
-      <div data-key="C19 Stefanie Viana" class="ft" id="ftwy4tsw"></div>
+      <!-- Script fornecido pelo Fouita -->
+      <script>
+        if (!document.querySelector('#ftwy4tsw')) {
+          var newDiv = document.createElement('div');
+          newDiv.setAttribute('key', 'Clínica Stefanie Viana ');
+          newDiv.setAttribute('class', 'ft');
+          newDiv.setAttribute('id', 'ftwy4tsw');
+          var newScript = document.createElement('script');
+          newScript.setAttribute('src', 'https://wdg.fouita.com/widgets/0x4329d2.js');
+          newDiv.appendChild(newScript);
+          document.body.appendChild(newDiv);
+        }
+      </script>
     </div>
-    
     <div class="text-center mt-6">
-      <a href="https://www.instagram.com/clinicastefanieviana/" target="_blank" class="btn-outline">
-        <i class="fab fa-instagram mr-2"></i> Seguir no Instagram
-      </a>
+      <a href="https://www.instagram.com/clinicastefanieviana/" target="_blank" class="btn-outline"><i class="fab fa-instagram mr-2"></i> Seguir no Instagram</a>
     </div>
   </section>
 
-  <!-- ===== SOBRE + LOCALIZAÇÃO ===== -->
+  <!-- SOBRE + LOCALIZAÇÃO -->
   <section id="sobre" class="my-20 grid grid-cols-1 lg:grid-cols-2 gap-8">
-    <!-- Sobre a clínica -->
     <div class="glass-card p-8">
-      <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 text-[#3a2e33]">
-        <i class="fas fa-heart text-[#d44e72]"></i> Sobre a Clínica
-      </h2>
-      <p class="text-[#6b5b62] leading-relaxed mb-4">
-        A <strong class="text-[#3a2e33]">Clínica Stefanie Viana</strong> é referência em saúde da mulher em Trairi-CE, 
-        com atendimento humanizado e equipamentos modernos.
-      </p>
-      <ul class="space-y-3 text-[#6b5b62]">
-        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-[#d44e72]"></i> Especialista em saúde da mulher</li>
-        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-[#d44e72]"></i> Atendimento humanizado</li>
-        <li class="flex items-center gap-2"><i class="fas fa-check-circle text-[#d44e72]"></i> Equipamentos modernos</li>
-      </ul>
+      <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-heart text-[#d44e72]"></i> Sobre a Clínica</h2>
+      <p class="text-[#6b5b62] leading-relaxed mb-4">A <strong>Clínica Stefanie Viana</strong> é referência em saúde da mulher em Trairi-CE, com atendimento humanizado e equipamentos modernos.</p>
+      <ul class="space-y-3 text-[#6b5b62]"><li class="flex items-center gap-2"><i class="fas fa-check-circle text-[#d44e72]"></i> Especialista em saúde da mulher</li><li class="flex items-center gap-2"><i class="fas fa-check-circle text-[#d44e72]"></i> Atendimento humanizado</li><li class="flex items-center gap-2"><i class="fas fa-check-circle text-[#d44e72]"></i> Equipamentos modernos</li></ul>
     </div>
-    
-    <!-- Localização + contato + MAPA -->
     <div id="localizacao" class="glass-card p-8">
-      <h2 class="text-2xl font-bold mb-4 flex items-center gap-2 text-[#3a2e33]">
-        <i class="fas fa-map-pin text-[#d44e72]"></i> Onde estamos
-      </h2>
-      <p class="text-[#6b5b62] mb-4">
-        <i class="fas fa-location-dot mr-2 text-[#d44e72]"></i>
-        R. Manoel Teixeira, 200 - Centro, Trairi - CE
-      </p>
-      
-      <!-- MAPA DO GOOGLE -->
+      <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-map-pin text-[#d44e72]"></i> Onde estamos</h2>
+      <p class="text-[#6b5b62] mb-4"><i class="fas fa-location-dot mr-2 text-[#d44e72]"></i>R. Manoel Teixeira, 200 - Centro, Trairi - CE</p>
       <div class="mb-4 rounded-xl overflow-hidden border border-black/5 shadow-sm">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.353886134567!2d-39.27610000000001!3d-3.2773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c14e6b6e6e6e6e%3A0x6e6e6e6e6e6e6e6e!2sR.%20Manoel%20Teixeira%2C%20200%20-%20Centro%2C%20Trairi%20-%20CE!5e0!3m2!1spt-BR!2sbr!4v1713000000000!5m2!1spt-BR!2sbr" 
-          width="100%" 
-          height="200" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Mapa da Clínica Stefanie Viana">
-        </iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.353886134567!2d-39.27610000000001!3d-3.2773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c14e6b6e6e6e6e%3A0x6e6e6e6e6e6e6e6e!2sR.%20Manoel%20Teixeira%2C%20200%20-%20Centro%2C%20Trairi%20-%20CE!5e0!3m2!1spt-BR!2sbr!4v1713000000000!5m2!1spt-BR!2sbr" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
       </div>
-      <p class="text-xs text-[#6b5b62] mb-4 text-center">
-        <i class="fas fa-map-marked-alt mr-1 text-[#d44e72]"></i> 
-        <a href="https://www.google.com/maps/search/?api=1&query=R.+Manoel+Teixeira,+200+-+Centro,+Trairi+-+CE" 
-           target="_blank" 
-           class="text-[#d44e72] hover:underline">
-          Ver no Google Maps <i class="fas fa-external-link-alt text-xs ml-1"></i>
-        </a>
-      </p>
-      
-      <div class="mb-4">
-        <p class="flex items-center gap-3 text-[#6b5b62]">
-          <i class="fab fa-whatsapp text-[#d44e72]"></i> (85) 98149-7934
-        </p>
-        <p class="flex items-center gap-3 text-[#6b5b62] mt-2">
-          <i class="fab fa-instagram text-[#d44e72]"></i> @clinicastefanieviana
-        </p>
-      </div>
-      <div class="mt-4 text-[#6b5b62] text-sm">
-        <p><i class="far fa-clock mr-2 text-[#d44e72]"></i> Seg-Sex: 7h-17h | Sáb: 7h-12h</p>
-      </div>
-      <a href="https://wa.me/5585981497934" class="btn-primary w-full text-center mt-6 block">
-        Agendar pelo WhatsApp
-      </a>
+      <p class="text-xs text-[#6b5b62] mb-4"><i class="fas fa-map-marked-alt mr-1 text-[#d44e72]"></i> <a href="https://maps.google.com/?q=R.+Manoel+Teixeira,+200+-+Centro,+Trairi+-+CE" target="_blank" class="text-[#d44e72] hover:underline">Ver no Google Maps</a></p>
+      <p class="flex items-center gap-3 text-[#6b5b62]"><i class="fab fa-whatsapp text-[#d44e72]"></i> (85) 98149-7934</p>
+      <p class="flex items-center gap-3 text-[#6b5b62] mt-2"><i class="fab fa-instagram text-[#d44e72]"></i> @clinicastefanieviana</p>
+      <p class="mt-4 text-sm"><i class="far fa-clock mr-2 text-[#d44e72]"></i>Seg-Sex: 7h-17h | Sáb: 7h-12h</p>
+      <a href="https://wa.me/5585981497934" class="btn-primary w-full text-center mt-6 block">Agendar pelo WhatsApp</a>
     </div>
   </section>
 </main>
 
-<!-- ===== RODAPÉ ===== -->
 <footer class="border-t border-black/5 mt-16 py-8">
-  <div class="max-w-7xl mx-auto px-4 md:px-8">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-      <div>
-        <p class="text-xl font-bold text-[#3a2e33]">Stefanie Viana</p>
-        <p class="text-[#6b5b62] text-sm">Saúde da Mulher · Trairi-CE</p>
-      </div>
-      <div class="flex gap-6 text-sm">
-        <a href="#inicio" class="text-[#6b5b62] hover:text-[#d44e72]">Início</a>
-        <a href="#servicos" class="text-[#6b5b62] hover:text-[#d44e72]">Serviços</a>
-        <a href="#destaque" class="text-[#6b5b62] hover:text-[#d44e72]">Destaque</a>
-        <a href="#avaliacoes" class="text-[#6b5b62] hover:text-[#d44e72]">Avaliações</a>
-        <a href="#instagram" class="text-[#6b5b62] hover:text-[#d44e72]">Instagram</a>
-        <a href="#sobre" class="text-[#6b5b62] hover:text-[#d44e72]">Contato</a>
-      </div>
-    </div>
-    <div class="text-center text-[#6b5b62] text-xs mt-8 opacity-60">
-      © 2026 Clínica Stefanie Viana · Todos os direitos reservados
+  <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+    <div><p class="text-xl font-bold">Stefanie Viana</p><p class="text-[#6b5b62] text-sm">Saúde da Mulher · Trairi-CE</p></div>
+    <div class="flex gap-6 text-sm">
+      <a href="#inicio" class="text-[#6b5b62] hover:text-[#d44e72]">Início</a><a href="#servicos" class="text-[#6b5b62] hover:text-[#d44e72]">Serviços</a><a href="#destaque" class="text-[#6b5b62] hover:text-[#d44e72]">Destaque</a><a href="#avaliacoes" class="text-[#6b5b62] hover:text-[#d44e72]">Avaliações</a><a href="#instagram" class="text-[#6b5b62] hover:text-[#d44e72]">Instagram</a><a href="#sobre" class="text-[#6b5b62] hover:text-[#d44e72]">Contato</a>
     </div>
   </div>
+  <div class="text-center text-[#6b5b62] text-xs mt-8 opacity-60">© 2026 Clínica Stefanie Viana · Todos os direitos reservados</div>
 </footer>
 
-<!-- Script do Fouita (carregado com defer para garantir execução após HTML) -->
-<script src="https://wdg.fouta.com/widgets/0x4329d2.js" defer></script>
-
-<!-- Scripts locais -->
 <script src="assets/js/main.js"></script>
 <script>
-  // Menu mobile toggle
-  document.getElementById('menu-toggle').addEventListener('click', function() {
-    const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
+  document.getElementById('menu-toggle').addEventListener('click', function(){
+    document.getElementById('mobile-menu').classList.toggle('hidden');
   });
   document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      document.getElementById('mobile-menu').classList.add('hidden');
-    });
+    link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
   });
 </script>
 </body>
