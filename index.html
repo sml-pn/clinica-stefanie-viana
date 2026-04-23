@@ -18,6 +18,33 @@
     .btn-outline:hover { background: rgba(212,78,114,0.04); border-color: #d44e72; }
     nav a { color: #3a2e33; opacity: 0.8; }
     nav a:hover { color: #d44e72; opacity: 1; }
+
+    /* Efeito parallax com blur */
+    .hero-parallax {
+      position: relative;
+      overflow: hidden;
+      background-color: #fdfbf9;
+    }
+    .hero-parallax::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('assets/images/logo.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-attachment: fixed;
+      filter: blur(8px);
+      opacity: 0.15;
+      z-index: 0;
+    }
+    .hero-parallax > * {
+      position: relative;
+      z-index: 1;
+    }
   </style>
 </head>
 <body class="antialiased overflow-x-hidden">
@@ -67,9 +94,9 @@
 
 <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 overflow-x-hidden">
 
-  <!-- HERO -->
-  <section id="inicio" class="my-12 md:my-20 text-center">
-    <div class="glass-card p-8 md:p-16 rounded-3xl bg-gradient-to-br from-[#fdfbf9] to-[#f7f2ed]">
+  <!-- HERO COM EFEITO PARALLAX -->
+  <section id="inicio" class="my-12 md:my-20 text-center hero-parallax rounded-3xl">
+    <div class="glass-card p-8 md:p-16 rounded-3xl relative z-10">
       <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 max-w-4xl mx-auto text-[#3a2e33]">
         <span class="text-[#d44e72]">Saúde da Mulher</span><br>com acolhimento e excelência
       </h1>
