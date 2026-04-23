@@ -25,7 +25,14 @@
 <!-- HEADER -->
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8">
   <div class="max-w-7xl mx-auto flex items-center justify-between">
-    <div class="text-2xl font-bold tracking-tight"><span class="text-[#d44e72]">Clínica</span> Stefanie Viana</div>
+    <!-- Logo + Nome (ajuste o src quando a imagem for enviada) -->
+    <div class="flex items-center gap-3">
+      <img src="assets/images/logo.png" alt="Clínica Stefanie Viana" class="h-12 w-auto">
+      <div class="text-2xl font-bold tracking-tight">
+        <span class="text-[#d44e72]">Clínica</span> Stefanie Viana
+      </div>
+    </div>
+    
     <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
       <a href="#inicio" class="hover:text-[#d44e72]">Início</a>
       <a href="#servicos" class="hover:text-[#d44e72]">Serviços</a>
@@ -129,39 +136,20 @@
     </div>
   </section>
 
-  <!-- INSTAGRAM (WIDGET FOUITA POSICIONADO CORRETAMENTE) -->
+  <!-- INSTAGRAM (WIDGET VIA IFRAME) -->
   <section id="instagram" class="my-20">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nosso Instagram</h2>
-    <p class="text-[#6b5b62] text-center">Fique por dentro das novidades da clínica</p>
+    <p class="text-[#6b5b62] text-center mb-2">Fique por dentro das novidades da clínica</p>
     
-    <div class="max-w-6xl mx-auto" style="min-height: 300px;" id="instagram-widget-container">
-      <!-- O script abaixo insere o widget exatamente dentro deste container -->
-      <script>
-        (function() {
-          // Evita duplicação
-          if (document.querySelector('#ftwy4tsw')) return;
-          
-          // Cria a div do widget
-          var widgetDiv = document.createElement('div');
-          widgetDiv.setAttribute('key', 'Clínica Stefanie Viana ');
-          widgetDiv.setAttribute('class', 'ft');
-          widgetDiv.setAttribute('id', 'ftwy4tsw');
-          
-          // Encontra o container específico da seção Instagram
-          var container = document.querySelector('#instagram-widget-container');
-          if (container) {
-            container.appendChild(widgetDiv);
-          } else {
-            // Fallback: se não achar, insere no body (mas não deve acontecer)
-            document.body.appendChild(widgetDiv);
-          }
-          
-          // Carrega o script do Fouita
-          var script = document.createElement('script');
-          script.setAttribute('src', 'https://wdg.fouita.com/widgets/0x4329d2.js');
-          widgetDiv.appendChild(script);
-        })();
-      </script>
+    <div class="max-w-6xl mx-auto">
+      <iframe 
+          src="https://emb.fouita.com/widget/0x4329d2/ftwy4tsw" 
+          title="Clínica Stefanie Viana" 
+          width="100%" 
+          height="600" 
+          frameborder="0" 
+          style="border-radius: 16px; display: block; margin: 0 auto;">
+      </iframe>
     </div>
     
     <div class="text-center mt-6">
@@ -212,6 +200,5 @@
     link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
   });
 </script>
-
 </body>
 </html>
