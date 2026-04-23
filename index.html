@@ -19,18 +19,20 @@
     nav a { color: #3a2e33; opacity: 0.8; }
     nav a:hover { color: #d44e72; opacity: 1; }
 
-    /* Hero com marca d'água */
+    /* Hero com marca d'água centralizada */
     .hero-card {
       position: relative;
       overflow: hidden;
     }
     .hero-watermark {
       position: absolute;
-      top: -5%;
-      left: -5%;
-      width: 110%;
-      height: 110%;
-      object-fit: cover;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 600px;
+      height: auto;
+      object-fit: contain;
       opacity: 0.1;
       filter: blur(8px);
       pointer-events: none;
@@ -89,7 +91,7 @@
 
 <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 overflow-x-hidden">
 
-  <!-- HERO COM MARCA D'ÁGUA MAIOR (110% COM ZOOM) -->
+  <!-- HERO COM MARCA D'ÁGUA CENTRALIZADA E MAIOR -->
   <section id="inicio" class="my-12 md:my-20 text-center">
     <div class="glass-card hero-card p-8 md:p-16 rounded-3xl">
       <img src="assets/images/logo.png" alt="" class="hero-watermark" loading="eager" decoding="async" fetchpriority="high">
