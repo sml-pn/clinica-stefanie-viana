@@ -26,13 +26,13 @@
     }
     .hero-watermark {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      max-width: 400px;
-      opacity: 0.12;
-      filter: blur(6px);
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;      /* preenche todo o card sem distorcer */
+      opacity: 0.1;            /* menos opaca = mais transparente */
+      filter: blur(8px);
       pointer-events: none;
       z-index: 0;
     }
@@ -89,10 +89,10 @@
 
 <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 overflow-x-hidden">
 
-  <!-- HERO COM MARCA D'ÁGUA (LOGO DESFOCADA ATRÁS DO TEXTO) -->
+  <!-- HERO COM MARCA D'ÁGUA (LOGO DESFOCADA PREENCHENDO TODO O FUNDO) -->
   <section id="inicio" class="my-12 md:my-20 text-center">
     <div class="glass-card hero-card p-8 md:p-16 rounded-3xl">
-      <!-- Imagem de fundo desfocada -->
+      <!-- Imagem de fundo desfocada que preenche todo o card -->
       <img src="assets/images/logo.png" alt="" class="hero-watermark">
       <!-- Conteúdo -->
       <div class="hero-content">
