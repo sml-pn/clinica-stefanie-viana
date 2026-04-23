@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/custom.css">
   <style>
-    body { background-color: #fdfbf9; color: #3a2e33; overflow-x: hidden; }
+    body { background-color: #fdfbf9; color: #3a2e33; overflow-x: hidden; margin: 0; }
     .glass-card { background: white; border-radius: 28px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
     .gradient-border { background: white; border-radius: 28px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
     .btn-primary { background: #d44e72; color: white; border-radius: 40px; padding: 0.75rem 2rem; font-weight: 500; transition: all 0.25s; }
@@ -19,29 +19,29 @@
     nav a { color: #3a2e33; opacity: 0.8; }
     nav a:hover { color: #d44e72; opacity: 1; }
 
-    /* Efeito parallax com blur */
-    .hero-parallax {
+    /* Container do efeito parallax */
+    .hero-container {
       position: relative;
       overflow: hidden;
-      background-color: #fdfbf9;
+      border-radius: 24px;
+      background-color: #fdfbf9; /* fallback */
     }
-    .hero-parallax::before {
-      content: "";
-      position: absolute;
+    /* Imagem de fundo fixa e desfocada */
+    .hero-bg {
+      position: fixed;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url('assets/images/logo.png');
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: fixed;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
       filter: blur(8px);
-      opacity: 0.15;
+      opacity: 0.12;
       z-index: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
     }
-    .hero-parallax > * {
+    /* Conteúdo sobreposto */
+    .hero-content {
       position: relative;
       z-index: 1;
     }
@@ -94,9 +94,10 @@
 
 <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 overflow-x-hidden">
 
-  <!-- HERO COM EFEITO PARALLAX -->
-  <section id="inicio" class="my-12 md:my-20 text-center hero-parallax rounded-3xl">
-    <div class="glass-card p-8 md:p-16 rounded-3xl relative z-10">
+  <!-- HERO COM PARALLAX (IMAGEM FIXA COM BLUR) -->
+  <section id="inicio" class="my-12 md:my-20 text-center hero-container">
+    <img src="assets/images/logo.png" alt="" class="hero-bg" id="heroBg">
+    <div class="glass-card p-8 md:p-16 rounded-3xl relative z-10 hero-content">
       <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 max-w-4xl mx-auto text-[#3a2e33]">
         <span class="text-[#d44e72]">Saúde da Mulher</span><br>com acolhimento e excelência
       </h1>
@@ -213,11 +214,29 @@
 
 <script src="assets/js/main.js"></script>
 <script>
+  // Menu mobile
   document.getElementById('menu-toggle').addEventListener('click', function(){
     document.getElementById('mobile-menu').classList.toggle('hidden');
   });
   document.querySelectorAll('#mobile-menu a').forEach(link => {
     link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
+  });
+
+  // Efeito de aparição suave da imagem de fundo
+  const heroBg = document.getElementById('heroBg');
+  window.addEventListener('scroll', () => {
+    const heroSection = document.getElementById('inicio');
+    const rect = heroSection.getBoundingClientRect();
+    // Define a opacidade com base na posição do hero em relação à viewport
+    // Quando o topo do hero está próximo do topo da tela, opacidade máxima (0.12), caso contrário some
+    const windowHeight = window.innerHeight;
+    let opacity = 0.12;
+    if (rect.bottom < 0 || rect.top > windowHeight) {
+      opacity = 0; // fora da tela
+    } else if (rect.top < 0) {
+      opacity = 0.12 * (1 - Math.abs(rect.top) / (windowHeight * 0.5));
+    }
+    heroBg.style.opacity = Math.max(0, opacity).toFixed(2);
   });
 </script>
 </body>
