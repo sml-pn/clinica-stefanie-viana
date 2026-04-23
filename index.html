@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/custom.css">
   <style>
-    body { background-color: #fdfbf9; color: #3a2e33; }
+    body { background-color: #fdfbf9; color: #3a2e33; overflow-x: hidden; }
     .glass-card { background: white; border-radius: 28px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
     .gradient-border { background: white; border-radius: 28px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
     .btn-primary { background: #d44e72; color: white; border-radius: 40px; padding: 0.75rem 2rem; font-weight: 500; transition: all 0.25s; }
@@ -20,33 +20,44 @@
     nav a:hover { color: #d44e72; opacity: 1; }
   </style>
 </head>
-<body class="antialiased">
+<body class="antialiased overflow-x-hidden">
 
-<!-- HEADER -->
+<!-- HEADER REESTRUTURADO -->
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8">
-  <div class="max-w-7xl mx-auto flex items-center justify-between">
-    <!-- Logo + Nome (ajuste o src quando a imagem for enviada) -->
-    <div class="flex items-center gap-3">
-      <img src="assets/images/logo.png" alt="Clínica Stefanie Viana" class="h-12 w-auto">
-      <div class="text-2xl font-bold tracking-tight">
-        <span class="text-[#d44e72]">Clínica</span> Stefanie Viana
+  <div class="max-w-7xl mx-auto">
+    <!-- Linha superior: Logo + Nome + Botão Agendar (mobile/desktop) -->
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="assets/images/logo.png" alt="Clínica Stefanie Viana" class="h-12 w-auto rounded-2xl">
+        <div class="text-2xl font-bold tracking-tight">
+          <span class="text-[#d44e72]">Clínica</span> Stefanie Viana
+        </div>
       </div>
+      
+      <!-- Botão Agendar (visível em desktop, oculto no mobile) -->
+      <a href="https://wa.me/5585981497934" class="hidden md:block btn-primary text-sm !py-2 !px-5">
+        Agendar <i class="fab fa-whatsapp ml-2"></i>
+      </a>
+      
+      <!-- Botão menu mobile -->
+      <button id="menu-toggle" class="md:hidden text-2xl text-[#3a2e33]">
+        <i class="fas fa-bars"></i>
+      </button>
     </div>
     
-    <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
-      <a href="#inicio" class="hover:text-[#d44e72]">Início</a>
-      <a href="#servicos" class="hover:text-[#d44e72]">Serviços</a>
-      <a href="#destaque" class="hover:text-[#d44e72]">Destaque</a>
-      <a href="#avaliacoes" class="hover:text-[#d44e72]">Avaliações</a>
-      <a href="#instagram" class="hover:text-[#d44e72]">Instagram</a>
-      <a href="#sobre" class="hover:text-[#d44e72]">Sobre</a>
-      <a href="#localizacao" class="hover:text-[#d44e72]">Localização</a>
+    <!-- Linha inferior: Navegação (apenas desktop) -->
+    <nav class="hidden md:flex items-center justify-center space-x-8 text-sm font-medium mt-3">
+      <a href="#inicio" class="hover:text-[#d44e72] transition">Início</a>
+      <a href="#servicos" class="hover:text-[#d44e72] transition">Serviços</a>
+      <a href="#destaque" class="hover:text-[#d44e72] transition">Destaque</a>
+      <a href="#avaliacoes" class="hover:text-[#d44e72] transition">Avaliações</a>
+      <a href="#instagram" class="hover:text-[#d44e72] transition">Instagram</a>
+      <a href="#sobre" class="hover:text-[#d44e72] transition">Sobre</a>
+      <a href="#localizacao" class="hover:text-[#d44e72] transition">Localização</a>
     </nav>
-    <div class="flex items-center gap-3">
-      <a href="https://wa.me/5585981497934" class="hidden md:block btn-primary text-sm !py-2 !px-5">Agendar <i class="fab fa-whatsapp ml-2"></i></a>
-      <button id="menu-toggle" class="md:hidden text-2xl text-[#3a2e33]"><i class="fas fa-bars"></i></button>
-    </div>
   </div>
+  
+  <!-- Menu mobile (dropdown) -->
   <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2 flex flex-col space-y-3 text-sm">
     <a href="#inicio" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Início</a>
     <a href="#servicos" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Serviços</a>
@@ -55,13 +66,16 @@
     <a href="#instagram" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Instagram</a>
     <a href="#sobre" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Sobre</a>
     <a href="#localizacao" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Localização</a>
-    <a href="https://wa.me/5585981497934" class="btn-primary text-center !py-2 mt-2">Agendar pelo WhatsApp</a>
+    <a href="https://wa.me/5585981497934" class="btn-primary text-center !py-2 mt-2">
+      Agendar pelo WhatsApp
+    </a>
   </div>
 </header>
 
-<div class="h-16 md:h-20"></div>
+<!-- Espaçamento para compensar header fixo (maior por causa da segunda linha) -->
+<div class="h-24 md:h-28"></div>
 
-<main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+<main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 overflow-x-hidden">
 
   <!-- HERO -->
   <section id="inicio" class="my-12 md:my-20 text-center">
@@ -136,26 +150,15 @@
     </div>
   </section>
 
-  <!-- INSTAGRAM (WIDGET VIA IFRAME) -->
+  <!-- INSTAGRAM -->
   <section id="instagram" class="my-20">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nosso Instagram</h2>
     <p class="text-[#6b5b62] text-center mb-2">Fique por dentro das novidades da clínica</p>
-    
     <div class="max-w-6xl mx-auto">
-      <iframe 
-          src="https://emb.fouita.com/widget/0x4329d2/ftwy4tsw" 
-          title="Clínica Stefanie Viana" 
-          width="100%" 
-          height="600" 
-          frameborder="0" 
-          style="border-radius: 16px; display: block; margin: 0 auto;">
-      </iframe>
+      <iframe src="https://emb.fouita.com/widget/0x4329d2/ftwy4tsw" title="Clínica Stefanie Viana" width="100%" height="600" frameborder="0" style="border-radius: 16px; display: block; margin: 0 auto;"></iframe>
     </div>
-    
     <div class="text-center mt-6">
-      <a href="https://www.instagram.com/clinicastefanieviana/" target="_blank" class="btn-outline">
-        <i class="fab fa-instagram mr-2"></i> Seguir no Instagram
-      </a>
+      <a href="https://www.instagram.com/clinicastefanieviana/" target="_blank" class="btn-outline"><i class="fab fa-instagram mr-2"></i> Seguir no Instagram</a>
     </div>
   </section>
 
