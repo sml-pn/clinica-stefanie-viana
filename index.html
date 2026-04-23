@@ -9,14 +9,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/custom.css">
   <style>
-    body { background-color: #fdfbf9; color: #3a2e33; overflow-x: hidden; margin: 0; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { background-color: #fdfbf9; color: #3a2e33; overflow-x: hidden; margin: 0; max-width: 100vw; }
     .glass-card { background: rgba(255,255,255,0.75); backdrop-filter: blur(10px); border-radius: 28px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
     .gradient-border { background: white; border-radius: 28px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
-    .btn-primary { background: #d44e72; color: white; border-radius: 40px; padding: 0.75rem 2rem; font-weight: 500; transition: all 0.25s; }
+    .btn-primary { background: #d44e72; color: white; border-radius: 40px; padding: 0.75rem 2rem; font-weight: 500; transition: all 0.25s; white-space: nowrap; }
     .btn-primary:hover { background: #a63655; transform: translateY(-2px); }
-    .btn-outline { background: transparent; border: 1.5px solid #e57a95; color: #d44e72; border-radius: 40px; padding: 0.75rem 2rem; font-weight: 500; transition: all 0.25s; }
+    .btn-outline { background: transparent; border: 1.5px solid #e57a95; color: #d44e72; border-radius: 40px; padding: 0.75rem 2rem; font-weight: 500; transition: all 0.25s; white-space: nowrap; }
     .btn-outline:hover { background: rgba(212,78,114,0.04); border-color: #d44e72; }
-    nav a { color: #3a2e33; opacity: 0.8; }
+    nav a { color: #3a2e33; opacity: 0.8; white-space: nowrap; }
     nav a:hover { color: #d44e72; opacity: 1; }
 
     /* Hero com marca d'água centralizada */
@@ -44,26 +45,26 @@
     }
   </style>
 </head>
-<body class="antialiased overflow-x-hidden">
+<body class="antialiased" style="overflow-x: hidden; max-width: 100vw;">
 
 <!-- HEADER -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8">
-  <div class="max-w-7xl mx-auto">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8" style="max-width: 100vw; overflow-x: hidden;">
+  <div class="max-w-7xl mx-auto" style="max-width: 100%;">
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <img src="assets/images/logo.png" alt="Clínica Stefanie Viana" class="h-12 w-auto rounded-2xl" width="48" height="48" decoding="async">
-        <div class="text-2xl font-bold tracking-tight">
+        <img src="assets/images/logo.png" alt="Clínica Stefanie Viana" class="h-12 w-auto rounded-2xl flex-shrink-0" width="48" height="48" decoding="async">
+        <div class="text-2xl font-bold tracking-tight flex-shrink-0">
           <span class="text-[#d44e72]">Clínica</span> Stefanie Viana
         </div>
       </div>
-      <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="hidden md:block btn-primary text-sm !py-2 !px-5">
+      <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="hidden md:block btn-primary text-sm !py-2 !px-5 flex-shrink-0">
         Agendar <i class="fab fa-whatsapp ml-2"></i>
       </a>
-      <button id="menu-toggle" class="md:hidden text-2xl text-[#3a2e33]">
+      <button id="menu-toggle" class="md:hidden text-2xl text-[#3a2e33] flex-shrink-0">
         <i class="fas fa-bars"></i>
       </button>
     </div>
-    <nav class="hidden md:flex items-center justify-center space-x-8 text-sm font-medium mt-3">
+    <nav class="hidden md:flex items-center justify-center space-x-4 lg:space-x-6 xl:space-x-8 text-sm font-medium mt-3 flex-wrap">
       <a href="#inicio" class="hover:text-[#d44e72] transition">Início</a>
       <a href="#servicos" class="hover:text-[#d44e72] transition">Serviços</a>
       <a href="#destaque" class="hover:text-[#d44e72] transition">Destaque</a>
@@ -89,9 +90,9 @@
 
 <div class="h-24 md:h-28"></div>
 
-<main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 overflow-x-hidden">
+<main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8" style="overflow-x: hidden; max-width: 100vw;">
 
-  <!-- HERO COM MARCA D'ÁGUA CENTRALIZADA E MAIOR -->
+  <!-- HERO COM MARCA D'ÁGUA CENTRALIZADA -->
   <section id="inicio" class="my-12 md:my-20 text-center">
     <div class="glass-card hero-card p-8 md:p-16 rounded-3xl">
       <img src="assets/images/logo.png" alt="" class="hero-watermark" loading="eager" decoding="async" fetchpriority="high">
@@ -172,7 +173,7 @@
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nosso Instagram</h2>
     <p class="text-[#6b5b62] text-center mb-2">Fique por dentro das novidades da clínica</p>
     <div class="max-w-6xl mx-auto">
-      <iframe src="https://emb.fouita.com/widget/0x4329d2/ftwy4tsw" title="Clínica Stefanie Viana" width="100%" height="600" frameborder="0" style="border-radius: 16px; display: block; margin: 0 auto;"></iframe>
+      <iframe src="https://emb.fouita.com/widget/0x4329d2/ftwy4tsw" title="Clínica Stefanie Viana" width="100%" height="600" frameborder="0" style="border-radius: 16px; display: block; margin: 0 auto; max-width: 100%;"></iframe>
     </div>
     <div class="text-center mt-6">
       <a href="https://www.instagram.com/clinicastefanieviana/" target="_blank" class="btn-outline"><i class="fab fa-instagram mr-2"></i> Seguir no Instagram</a>
@@ -190,7 +191,7 @@
       <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-map-pin text-[#d44e72]"></i> Onde estamos</h2>
       <p class="text-[#6b5b62] mb-4"><i class="fas fa-location-dot mr-2 text-[#d44e72]"></i>R. Manoel Teixeira, 200 - Centro, Trairi - CE</p>
       <div class="mb-4 rounded-xl overflow-hidden border border-black/5 shadow-sm">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.353886134567!2d-39.27610000000001!3d-3.2773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c14e6b6e6e6e6e%3A0x6e6e6e6e6e6e6e6e!2sR.%20Manoel%20Teixeira%2C%20200%20-%20Centro%2C%20Trairi%20-%20CE!5e0!3m2!1spt-BR!2sbr!4v1713000000000!5m2!1spt-BR!2sbr" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3981.353886134567!2d-39.27610000000001!3d-3.2773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7c14e6b6e6e6e6e%3A0x6e6e6e6e6e6e6e6e!2sR.%20Manoel%20Teixeira%2C%20200%20-%20Centro%2C%20Trairi%20-%20CE!5e0!3m2!1spt-BR!2sbr!4v1713000000000!5m2!1spt-BR!2sbr" width="100%" height="200" style="border:0; max-width: 100%;" allowfullscreen="" loading="lazy"></iframe>
       </div>
       <p class="text-xs text-[#6b5b62] mb-4"><i class="fas fa-map-marked-alt mr-1 text-[#d44e72]"></i> <a href="https://maps.google.com/?q=R.+Manoel+Teixeira,+200+-+Centro,+Trairi+-+CE" target="_blank" class="text-[#d44e72] hover:underline">Ver no Google Maps</a></p>
       <p class="flex items-center gap-3 text-[#6b5b62]"><i class="fab fa-whatsapp text-[#d44e72]"></i> (85) 98149-7934</p>
@@ -201,11 +202,16 @@
   </section>
 </main>
 
-<footer class="border-t border-black/5 mt-16 py-8">
+<footer class="border-t border-black/5 mt-16 py-8" style="max-width: 100vw; overflow-x: hidden;">
   <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
     <div><p class="text-xl font-bold">Stefanie Viana</p><p class="text-[#6b5b62] text-sm">Saúde da Mulher · Trairi-CE</p></div>
-    <div class="flex gap-6 text-sm">
-      <a href="#inicio" class="text-[#6b5b62] hover:text-[#d44e72]">Início</a><a href="#servicos" class="text-[#6b5b62] hover:text-[#d44e72]">Serviços</a><a href="#destaque" class="text-[#6b5b62] hover:text-[#d44e72]">Destaque</a><a href="#avaliacoes" class="text-[#6b5b62] hover:text-[#d44e72]">Avaliações</a><a href="#instagram" class="text-[#6b5b62] hover:text-[#d44e72]">Instagram</a><a href="#sobre" class="text-[#6b5b62] hover:text-[#d44e72]">Contato</a>
+    <div class="flex gap-4 md:gap-6 text-sm flex-wrap justify-center">
+      <a href="#inicio" class="text-[#6b5b62] hover:text-[#d44e72]">Início</a>
+      <a href="#servicos" class="text-[#6b5b62] hover:text-[#d44e72]">Serviços</a>
+      <a href="#destaque" class="text-[#6b5b62] hover:text-[#d44e72]">Destaque</a>
+      <a href="#avaliacoes" class="text-[#6b5b62] hover:text-[#d44e72]">Avaliações</a>
+      <a href="#instagram" class="text-[#6b5b62] hover:text-[#d44e72]">Instagram</a>
+      <a href="#sobre" class="text-[#6b5b62] hover:text-[#d44e72]">Contato</a>
     </div>
   </div>
   <div class="text-center text-[#6b5b62] text-xs mt-8 opacity-60">© 2026 Clínica Stefanie Viana · Todos os direitos reservados</div>
