@@ -12,7 +12,7 @@
     *, *::before, *::after { box-sizing: border-box; }
     body { background-color: #fdfbf9; color: #3a2e33; overflow-x: hidden; margin: 0; max-width: 100vw; }
 
-    /* Cards comuns (serviços, avaliações, etc.) */
+    /* Cards comuns */
     .glass-card-common {
       background: rgba(255,255,255,0.75);
       backdrop-filter: blur(10px);
@@ -20,18 +20,6 @@
       box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02);
       border: 1px solid rgba(0,0,0,0.04);
     }
-
-    /* Card Hero com efeito de vidro transparente */
-    .glass-card-hero {
-      background: rgba(255,255,255,0.4);
-      backdrop-filter: blur(20px);
-      border-radius: 28px;
-      box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02);
-      border: 1px solid rgba(255,255,255,0.5);
-      position: relative;
-      z-index: 2; /* fica acima da imagem */
-    }
-
     .gradient-border {
       background: white;
       border-radius: 28px;
@@ -106,27 +94,61 @@
       transform: translateY(0);
     }
 
-    /* Container externo — permite que a imagem vaze */
-    .hero-outer {
+    /* ===== NOVO HERO ===== */
+    .hero-fullscreen {
       position: relative;
-      overflow: visible; /* ESSENCIAL: permite que a imagem ultrapasse os limites */
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-top: calc(-1 * (var(--header-height) + var(--urgency-height)));
+      padding-top: calc(var(--header-height) + var(--urgency-height));
+    }
+    @media (max-width: 767px) {
+      .hero-fullscreen {
+        min-height: 85vh;
+      }
     }
 
-    /* Imagem atrás do card — com aceleração GPU */
-    .hero-watermark-external {
+    /* Imagem de fundo com parallax */
+    .hero-bg-image {
       position: absolute;
-      top: -15%;
-      left: -15%;
-      width: 130%;
-      height: 130%;
-      object-fit: contain;
-      opacity: 0.35;          /* mais visível */
-      filter: blur(2px);       /* mais nítida */
-      pointer-events: none;
+      top: -10%;
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      background-image: url('assets/images/logo.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.35;
+      filter: blur(0px);
+      transform: translateZ(0) scale(1.05);
+      will-change: transform;
       z-index: 0;
-      /* Força GPU: evita flicker no carregamento */
-      transform: translateZ(0);
-      will-change: filter;
+    }
+
+    /* Overlay gradiente */
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(253,251,249,0.6) 0%, rgba(253,251,249,0.85) 100%);
+      z-index: 1;
+    }
+
+    /* Card de vidro flutuante */
+    .hero-card-floating {
+      position: relative;
+      z-index: 2;
+      background: rgba(255,255,255,0.5);
+      backdrop-filter: blur(30px);
+      border-radius: 32px;
+      box-shadow: 0 30px 50px rgba(0,0,0,0.08), 0 5px 15px rgba(0,0,0,0.03);
+      border: 1px solid rgba(255,255,255,0.6);
+      max-width: 800px;
+      width: 90%;
+      margin: 0 auto;
     }
 
     nav a {
@@ -134,29 +156,26 @@
       opacity: 0.8;
       white-space: nowrap;
     }
-    nav a:hover {
-      color: #d44e72;
-      opacity: 1;
-    }
+    nav a:hover { color: #d44e72; opacity: 1; }
   </style>
 </head>
-<body class="antialiased" style="overflow-x: hidden; max-width: 100vw;">
+<body class="antialiased" style="overflow-x: hidden; max-width: 100vw; --header-height: 80px; --urgency-height: 40px;">
 
 <!-- BARRA DE URGÊNCIA -->
 <div class="urgency-bar">
   ⚠️ Últimas vagas para esta semana – agende agora e garanta seu horário!
 </div>
 
-<!-- HEADER -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8" style="max-width: 100vw; overflow-x: hidden; margin-top: 0;">
-  <div class="max-w-7xl mx-auto" style="max-width: 100%;">
-    <div class="flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <img src="assets/images/logo.png" alt="Clínica Stefanie Viana" class="h-12 w-auto rounded-2xl flex-shrink-0" width="48" height="48" decoding="async" loading="eager" fetchpriority="high">
-        <div class="text-2xl font-bold tracking-tight flex-shrink-0">
-          <span class="text-[#d44e72]">Clínica</span> Stefanie Viana
-        </div>
+<!-- HEADER (altura ~80px) -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8" style="max-width: 100vw; overflow-x: hidden; height: var(--header-height);">
+  <div class="max-w-7xl mx-auto h-full flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <img src="assets/images/logo.png" alt="Clínica Stefanie Viana" class="h-12 w-auto rounded-2xl flex-shrink-0" width="48" height="48" decoding="async" loading="eager" fetchpriority="high">
+      <div class="text-2xl font-bold tracking-tight flex-shrink-0">
+        <span class="text-[#d44e72]">Clínica</span> Stefanie Viana
       </div>
+    </div>
+    <div class="flex items-center gap-3">
       <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="hidden md:block btn-primary text-sm !py-2 !px-5 flex-shrink-0">
         Agendar <i class="fab fa-whatsapp ml-2"></i>
       </a>
@@ -164,17 +183,19 @@
         <i class="fas fa-bars"></i>
       </button>
     </div>
-    <nav class="hidden md:flex items-center justify-center space-x-4 lg:space-x-6 xl:space-x-8 text-sm font-medium mt-3 flex-wrap">
-      <a href="#inicio" class="hover:text-[#d44e72] transition">Início</a>
-      <a href="#servicos" class="hover:text-[#d44e72] transition">Serviços</a>
-      <a href="#destaque" class="hover:text-[#d44e72] transition">Destaque</a>
-      <a href="#avaliacoes" class="hover:text-[#d44e72] transition">Avaliações</a>
-      <a href="#instagram" class="hover:text-[#d44e72] transition">Instagram</a>
-      <a href="#sobre" class="hover:text-[#d44e72] transition">Sobre</a>
-      <a href="#localizacao" class="hover:text-[#d44e72] transition">Localização</a>
-    </nav>
   </div>
-  <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2 flex flex-col space-y-3 text-sm">
+  <!-- Navegação desktop (aparece abaixo do header) -->
+  <nav class="hidden md:flex items-center justify-center space-x-4 lg:space-x-6 xl:space-x-8 text-sm font-medium mt-3 flex-wrap">
+    <a href="#inicio" class="hover:text-[#d44e72] transition">Início</a>
+    <a href="#servicos" class="hover:text-[#d44e72] transition">Serviços</a>
+    <a href="#destaque" class="hover:text-[#d44e72] transition">Destaque</a>
+    <a href="#avaliacoes" class="hover:text-[#d44e72] transition">Avaliações</a>
+    <a href="#instagram" class="hover:text-[#d44e72] transition">Instagram</a>
+    <a href="#sobre" class="hover:text-[#d44e72] transition">Sobre</a>
+    <a href="#localizacao" class="hover:text-[#d44e72] transition">Localização</a>
+  </nav>
+  <!-- Menu mobile -->
+  <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2 flex flex-col space-y-3 text-sm absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-md px-4">
     <a href="#inicio" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Início</a>
     <a href="#servicos" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Serviços</a>
     <a href="#destaque" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Destaque</a>
@@ -188,37 +209,31 @@
   </div>
 </header>
 
-<!-- ESPAÇO DO HEADER FIXO -->
-<div style="height: 110px;"></div>
+<main style="overflow-x: hidden; max-width: 100vw;">
 
-<main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8" style="overflow-x: hidden; max-width: 100vw;">
-
-  <!-- CONTADOR DE PACIENTES -->
-  <div class="text-center py-5">
-    <p class="text-2xl md:text-3xl font-bold text-[#d44e72]"><span id="patient-counter">0</span>+</p>
-    <p class="text-[#6b5b62]">mulheres já confiaram na nossa clínica</p>
-  </div>
-
-  <!-- HERO: IMAGEM VAZANDO + CARD DE VIDRO TRANSPARENTE -->
-  <section id="inicio" class="my-10 md:my-16 text-center fade-in hero-outer">
-    <!-- Imagem atrás do card, vazando com aceleração GPU -->
-    <img src="assets/images/logo.png" alt="" class="hero-watermark-external" loading="eager" decoding="async" fetchpriority="high">
-    <!-- Card de vidro transparente sobreposto -->
-    <div class="glass-card-hero p-8 md:p-16 rounded-3xl">
-      <div class="hero-content">
-        <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 max-w-4xl mx-auto text-[#3a2e33]">
-          <span class="text-[#d44e72]">Saúde da Mulher</span><br>com acolhimento e excelência
-        </h1>
-        <p class="text-lg md:text-xl text-[#6b5b62] mb-8 max-w-2xl mx-auto">
-          Descubra um cuidado inovador que transforma sua experiência de bem-estar.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Quero%20agendar%20minha%20consulta%20e%20conhecer%20os%20servi%C3%A7os." target="_blank" class="btn-primary text-lg">Agende sua consulta <i class="fas fa-arrow-right ml-2"></i></a>
-          <a href="#servicos" class="btn-outline text-lg">Ver todos os serviços</a>
-        </div>
+  <!-- NOVO HERO FULLSCREEN COM PARALLAX -->
+  <section id="inicio" class="hero-fullscreen fade-in">
+    <div class="hero-bg-image" id="parallax-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-card-floating p-8 md:p-16 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 text-[#3a2e33]">
+        <span class="text-[#d44e72]">Saúde da Mulher</span><br>com acolhimento e excelência
+      </h1>
+      <p class="text-lg md:text-xl text-[#6b5b62] mb-8 max-w-2xl mx-auto">
+        Descubra um cuidado inovador que transforma sua experiência de bem-estar.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Quero%20agendar%20minha%20consulta%20e%20conhecer%20os%20servi%C3%A7os." target="_blank" class="btn-primary text-lg">Agende sua consulta <i class="fas fa-arrow-right ml-2"></i></a>
+        <a href="#servicos" class="btn-outline text-lg">Ver todos os serviços</a>
       </div>
     </div>
   </section>
+
+  <!-- CONTADOR DE PACIENTES (agora com margem negativa para colar no hero) -->
+  <div class="text-center py-5 -mt-6">
+    <p class="text-2xl md:text-3xl font-bold text-[#d44e72]"><span id="patient-counter">0</span>+</p>
+    <p class="text-[#6b5b62]">mulheres já confiaram na nossa clínica</p>
+  </div>
 
   <!-- BANNER PROMOCIONAL (largura total) -->
   <div class="-mx-4 md:-mx-6 lg:-mx-8">
@@ -240,30 +255,18 @@
   </div>
 
   <!-- SERVIÇOS -->
-  <section id="servicos" class="my-20 fade-in">
+  <section id="servicos" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nossos Serviços</h2>
     <p class="text-[#6b5b62] text-center mb-12">Cuidado integral para todas as fases da vida da mulher</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="glass-card-common p-6">
-        <div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-stethoscope text-[#d44e72] text-xl"></i></div>
-        <h3 class="text-xl font-semibold mb-2">Consultas</h3>
-        <ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Ginecologia</li><li>• Obstetrícia</li><li>• Pré-natal</li><li>• Planejamento familiar</li></ul>
-      </div>
-      <div class="glass-card-common p-6">
-        <div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-microscope text-[#d44e72] text-xl"></i></div>
-        <h3 class="text-xl font-semibold mb-2">Exames</h3>
-        <ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Ultrassom</li><li>• Papanicolau</li><li>• Colposcopia</li><li>• Laboratoriais</li></ul>
-      </div>
-      <div class="glass-card-common p-6">
-        <div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-syringe text-[#d44e72] text-xl"></i></div>
-        <h3 class="text-xl font-semibold mb-2">Procedimentos</h3>
-        <ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Inserção de DIU</li><li>• Implante hormonal</li><li>• Pequenas cirurgias</li><li>• Biópsia</li></ul>
-      </div>
+      <div class="glass-card-common p-6"><div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-stethoscope text-[#d44e72] text-xl"></i></div><h3 class="text-xl font-semibold mb-2">Consultas</h3><ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Ginecologia</li><li>• Obstetrícia</li><li>• Pré-natal</li><li>• Planejamento familiar</li></ul></div>
+      <div class="glass-card-common p-6"><div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-microscope text-[#d44e72] text-xl"></i></div><h3 class="text-xl font-semibold mb-2">Exames</h3><ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Ultrassom</li><li>• Papanicolau</li><li>• Colposcopia</li><li>• Laboratoriais</li></ul></div>
+      <div class="glass-card-common p-6"><div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-syringe text-[#d44e72] text-xl"></i></div><h3 class="text-xl font-semibold mb-2">Procedimentos</h3><ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Inserção de DIU</li><li>• Implante hormonal</li><li>• Pequenas cirurgias</li><li>• Biópsia</li></ul></div>
     </div>
   </section>
 
   <!-- DESTAQUE DR. JELSON -->
-  <section id="destaque" class="my-20 fade-in">
+  <section id="destaque" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
     <div class="glass-card-common p-8 md:p-10">
       <div class="flex flex-col md:flex-row gap-8 items-center">
         <div class="md:w-1/2">
@@ -275,15 +278,13 @@
           </div>
           <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20com%20o%20Dr.%20Jelson%20Batista." target="_blank" class="btn-primary inline-block mt-8">Agendar com Dr. Jelson <i class="fab fa-whatsapp ml-2"></i></a>
         </div>
-        <div class="md:w-1/2 flex justify-center">
-          <div class="w-48 h-48 rounded-full bg-gradient-to-br from-[#d44e72]/20 to-[#f4a261]/20 flex items-center justify-center border-2 border-[#d44e72]/20"><i class="fas fa-user-md text-7xl text-[#d44e72]"></i></div>
-        </div>
+        <div class="md:w-1/2 flex justify-center"><div class="w-48 h-48 rounded-full bg-gradient-to-br from-[#d44e72]/20 to-[#f4a261]/20 flex items-center justify-center border-2 border-[#d44e72]/20"><i class="fas fa-user-md text-7xl text-[#d44e72]"></i></div></div>
       </div>
     </div>
   </section>
 
   <!-- AVALIAÇÕES -->
-  <section id="avaliacoes" class="my-20 fade-in">
+  <section id="avaliacoes" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center">O que dizem nossas pacientes</h2>
     <p class="text-[#6b5b62] text-center mb-12">Depoimentos de quem confia na Clínica Stefanie Viana</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -294,7 +295,7 @@
   </section>
 
   <!-- INSTAGRAM -->
-  <section id="instagram" class="my-20 fade-in">
+  <section id="instagram" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nosso Instagram</h2>
     <p class="text-[#6b5b62] text-center mb-2">Fique por dentro das novidades da clínica</p>
     <div class="max-w-6xl mx-auto">
@@ -306,7 +307,7 @@
   </section>
 
   <!-- SOBRE + LOCALIZAÇÃO -->
-  <section id="sobre" class="my-20 grid grid-cols-1 lg:grid-cols-2 gap-8 fade-in">
+  <section id="sobre" class="my-20 grid grid-cols-1 lg:grid-cols-2 gap-8 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
     <div class="glass-card-common p-8">
       <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-heart text-[#d44e72]"></i> Sobre a Clínica</h2>
       <p class="text-[#6b5b62] leading-relaxed mb-4">A <strong>Clínica Stefanie Viana</strong> é referência em saúde da mulher em Trairi-CE, com atendimento humanizado e equipamentos modernos.</p>
@@ -391,6 +392,15 @@
       }
     });
     counterObserver.observe(counterEl);
+  }
+
+  // Parallax suave no hero
+  const parallaxBg = document.getElementById('parallax-bg');
+  if (parallaxBg) {
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      parallaxBg.style.transform = `translateZ(0) scale(1.05) translateY(${scrollY * 0.15}px)`;
+    });
   }
 </script>
 </body>
