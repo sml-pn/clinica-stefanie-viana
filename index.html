@@ -93,24 +93,27 @@
       transform: translateY(0);
     }
 
-    /* Marca d'água interna ao card (não vaza) */
-    .hero-card {
+    /* Container externo para a imagem atrás do card */
+    .hero-outer {
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
-    .hero-watermark {
+    .hero-watermark-external {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      max-width: 600px;
-      height: auto;
+      top: -15%;
+      left: -10%;
+      width: 120%;
+      height: 120%;
       object-fit: contain;
       opacity: 0.08;
       filter: blur(12px);
       pointer-events: none;
       z-index: 0;
+    }
+    .hero-card {
+      position: relative;
+      z-index: 1;
+      overflow: hidden; /* garante que o conteúdo card fique com bordas arredondadas */
     }
     .hero-content {
       position: relative;
@@ -187,11 +190,12 @@
     <p class="text-[#6b5b62]">mulheres já confiaram na nossa clínica</p>
   </div>
 
-  <!-- HERO COM MARCA D'ÁGUA INTERNA (IMAGEM CONTIDA NO CARD) -->
-  <section id="inicio" class="my-10 md:my-16 text-center fade-in">
+  <!-- HERO COM IMAGEM EXTERNA (VAZANDO PARA FORA DO CARD) -->
+  <section id="inicio" class="my-10 md:my-16 text-center fade-in hero-outer">
+    <!-- Imagem atrás do card, externa -->
+    <img src="assets/images/logo.png" alt="" class="hero-watermark-external" loading="eager" decoding="async" fetchpriority="high">
+    <!-- Card de conteúdo com efeito de vidro -->
     <div class="glass-card hero-card p-8 md:p-16 rounded-3xl">
-      <!-- Imagem interna, não vaza -->
-      <img src="assets/images/logo.png" alt="" class="hero-watermark" loading="eager" decoding="async" fetchpriority="high">
       <div class="hero-content">
         <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 max-w-4xl mx-auto text-[#3a2e33]">
           <span class="text-[#d44e72]">Saúde da Mulher</span><br>com acolhimento e excelência
