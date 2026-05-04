@@ -12,7 +12,6 @@
     *, *::before, *::after { box-sizing: border-box; }
     body { background-color: #fdfbf9; color: #3a2e33; overflow-x: hidden; margin: 0; max-width: 100vw; }
 
-    /* Cards com efeito de vidro */
     .glass-card {
       background: rgba(255,255,255,0.75);
       backdrop-filter: blur(10px);
@@ -27,7 +26,6 @@
       border: 1px solid rgba(0,0,0,0.04);
     }
 
-    /* Botões */
     .btn-primary {
       background: #d44e72;
       color: white;
@@ -51,7 +49,6 @@
     }
     .btn-outline:hover { background: rgba(212,78,114,0.04); border-color: #d44e72; }
 
-    /* Botão flutuante do WhatsApp */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -71,7 +68,6 @@
     }
     .whatsapp-float:hover { transform: scale(1.1); }
 
-    /* Barra de urgência */
     .urgency-bar {
       background: #d44e72;
       color: white;
@@ -82,13 +78,11 @@
       letter-spacing: 0.3px;
     }
 
-    /* Animação de pulsar */
     @keyframes pulse {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.03); }
     }
 
-    /* Fade-in */
     .fade-in {
       opacity: 0;
       transform: translateY(20px);
@@ -99,7 +93,7 @@
       transform: translateY(0);
     }
 
-    /* Hero watermark */
+    /* Marca d'água interna ao card (não vaza) */
     .hero-card {
       position: relative;
       overflow: hidden;
@@ -113,8 +107,8 @@
       max-width: 600px;
       height: auto;
       object-fit: contain;
-      opacity: 0.1;
-      filter: blur(8px);
+      opacity: 0.08;
+      filter: blur(12px);
       pointer-events: none;
       z-index: 0;
     }
@@ -123,7 +117,6 @@
       z-index: 1;
     }
 
-    /* Navegação */
     nav a {
       color: #3a2e33;
       opacity: 0.8;
@@ -183,7 +176,7 @@
   </div>
 </header>
 
-<!-- ESPAÇO DO HEADER FIXO (altura do header + barra de urgência) -->
+<!-- ESPAÇO DO HEADER FIXO -->
 <div style="height: 110px;"></div>
 
 <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8" style="overflow-x: hidden; max-width: 100vw;">
@@ -194,9 +187,10 @@
     <p class="text-[#6b5b62]">mulheres já confiaram na nossa clínica</p>
   </div>
 
-  <!-- HERO -->
+  <!-- HERO COM MARCA D'ÁGUA INTERNA (IMAGEM CONTIDA NO CARD) -->
   <section id="inicio" class="my-10 md:my-16 text-center fade-in">
     <div class="glass-card hero-card p-8 md:p-16 rounded-3xl">
+      <!-- Imagem interna, não vaza -->
       <img src="assets/images/logo.png" alt="" class="hero-watermark" loading="eager" decoding="async" fetchpriority="high">
       <div class="hero-content">
         <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 max-w-4xl mx-auto text-[#3a2e33]">
@@ -213,22 +207,24 @@
     </div>
   </section>
 
-  <!-- BANNER PROMOCIONAL -->
-  <section class="my-12 fade-in">
-    <div class="gradient-border p-0.5 rounded-[28px]">
-      <div class="bg-white rounded-[28px] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between">
-        <div class="mb-4 md:mb-0">
-          <span class="text-sm uppercase tracking-wider text-[#d44e72] font-semibold">Nova temporada · Cuidados renovados</span>
-          <h2 class="text-2xl md:text-3xl font-bold mt-1 text-[#3a2e33]">Check-up completo com especialista</h2>
-          <p class="text-[#6b5b62] mt-2">Dr. Jelson Batista · Clínico Geral CRM 21146</p>
-        </div>
-        <div class="flex gap-3">
-          <a href="#destaque" class="btn-outline !py-2 !px-6">Saiba mais</a>
-          <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vi%20o%20banner%20do%20check-up%20completo%20e%20quero%20agendar." target="_blank" class="btn-primary !py-2 !px-6">Agendar agora</a>
+  <!-- BANNER PROMOCIONAL (largura total) -->
+  <div class="-mx-4 md:-mx-6 lg:-mx-8">
+    <section class="my-12 fade-in px-4 md:px-6 lg:px-8">
+      <div class="gradient-border p-0.5 rounded-[28px] max-w-7xl mx-auto">
+        <div class="bg-white rounded-[28px] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between">
+          <div class="mb-4 md:mb-0">
+            <span class="text-sm uppercase tracking-wider text-[#d44e72] font-semibold">Nova temporada · Cuidados renovados</span>
+            <h2 class="text-2xl md:text-3xl font-bold mt-1 text-[#3a2e33]">Check-up completo com especialista</h2>
+            <p class="text-[#6b5b62] mt-2">Dr. Jelson Batista · Clínico Geral CRM 21146</p>
+          </div>
+          <div class="flex gap-3">
+            <a href="#destaque" class="btn-outline !py-2 !px-6">Saiba mais</a>
+            <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vi%20o%20banner%20do%20check-up%20completo%20e%20quero%20agendar." target="_blank" class="btn-primary !py-2 !px-6">Agendar agora</a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
   <!-- SERVIÇOS -->
   <section id="servicos" class="my-20 fade-in">
@@ -253,7 +249,7 @@
     </div>
   </section>
 
-  <!-- DESTAQUE DR. JELSON (ANTES DAS AVALIAÇÕES) -->
+  <!-- DESTAQUE DR. JELSON -->
   <section id="destaque" class="my-20 fade-in">
     <div class="glass-card p-8 md:p-10">
       <div class="flex flex-col md:flex-row gap-8 items-center">
@@ -363,7 +359,7 @@
   // Contador animado de pacientes
   const counterEl = document.getElementById('patient-counter');
   if (counterEl) {
-    const target = 500; // número final
+    const target = 500;
     let count = 0;
     const speed = 30;
     const inc = Math.ceil(target / 60);
