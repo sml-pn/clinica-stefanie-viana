@@ -11,16 +11,95 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     body { background-color: #fdfbf9; color: #3a2e33; overflow-x: hidden; margin: 0; max-width: 100vw; }
-    .glass-card { background: rgba(255,255,255,0.75); backdrop-filter: blur(10px); border-radius: 28px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
-    .gradient-border { background: white; border-radius: 28px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02); border: 1px solid rgba(0,0,0,0.04); }
-    .btn-primary { background: #d44e72; color: white; border-radius: 40px; padding: 0.75rem 2rem; font-weight: 500; transition: all 0.25s; white-space: nowrap; }
-    .btn-primary:hover { background: #a63655; transform: translateY(-2px); }
-    .btn-outline { background: transparent; border: 1.5px solid #e57a95; color: #d44e72; border-radius: 40px; padding: 0.75rem 2rem; font-weight: 500; transition: all 0.25s; white-space: nowrap; }
-    .btn-outline:hover { background: rgba(212,78,114,0.04); border-color: #d44e72; }
-    nav a { color: #3a2e33; opacity: 0.8; white-space: nowrap; }
-    nav a:hover { color: #d44e72; opacity: 1; }
 
-    /* Hero com marca d'água centralizada */
+    /* Cards com efeito de vidro */
+    .glass-card {
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 28px;
+      box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .gradient-border {
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    /* Botões */
+    .btn-primary {
+      background: #d44e72;
+      color: white;
+      border-radius: 40px;
+      padding: 0.75rem 2rem;
+      font-weight: 500;
+      transition: all 0.25s;
+      white-space: nowrap;
+      animation: pulse 2s infinite;
+    }
+    .btn-primary:hover { background: #a63655; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #e57a95;
+      color: #d44e72;
+      border-radius: 40px;
+      padding: 0.75rem 2rem;
+      font-weight: 500;
+      transition: all 0.25s;
+      white-space: nowrap;
+    }
+    .btn-outline:hover { background: rgba(212,78,114,0.04); border-color: #d44e72; }
+
+    /* Botão flutuante do WhatsApp */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 999;
+      transition: transform 0.2s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    /* Barra de urgência */
+    .urgency-bar {
+      background: #d44e72;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* Animação de pulsar */
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    /* Fade-in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero watermark */
     .hero-card {
       position: relative;
       overflow: hidden;
@@ -43,16 +122,32 @@
       position: relative;
       z-index: 1;
     }
+
+    /* Navegação */
+    nav a {
+      color: #3a2e33;
+      opacity: 0.8;
+      white-space: nowrap;
+    }
+    nav a:hover {
+      color: #d44e72;
+      opacity: 1;
+    }
   </style>
 </head>
 <body class="antialiased" style="overflow-x: hidden; max-width: 100vw;">
 
+<!-- BARRA DE URGÊNCIA -->
+<div class="urgency-bar">
+  ⚠️ Últimas vagas para esta semana – agende agora e garanta seu horário!
+</div>
+
 <!-- HEADER -->
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8" style="max-width: 100vw; overflow-x: hidden;">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8" style="max-width: 100vw; overflow-x: hidden; margin-top: 0;">
   <div class="max-w-7xl mx-auto" style="max-width: 100%;">
     <div class="flex items-center justify-between">
       <div class="flex items-center gap-3">
-        <img src="assets/images/logo.png" alt="Clínica Stefanie Viana" class="h-12 w-auto rounded-2xl flex-shrink-0" width="48" height="48" decoding="async">
+        <img src="assets/images/logo.png" alt="Clínica Stefanie Viana" class="h-12 w-auto rounded-2xl flex-shrink-0" width="48" height="48" decoding="async" loading="eager" fetchpriority="high">
         <div class="text-2xl font-bold tracking-tight flex-shrink-0">
           <span class="text-[#d44e72]">Clínica</span> Stefanie Viana
         </div>
@@ -88,12 +183,19 @@
   </div>
 </header>
 
-<div class="h-24 md:h-28"></div>
+<!-- ESPAÇO DO HEADER FIXO (altura do header + barra de urgência) -->
+<div style="height: 110px;"></div>
 
 <main class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8" style="overflow-x: hidden; max-width: 100vw;">
 
-  <!-- HERO COM MARCA D'ÁGUA CENTRALIZADA -->
-  <section id="inicio" class="my-12 md:my-20 text-center">
+  <!-- CONTADOR DE PACIENTES -->
+  <div class="text-center py-5">
+    <p class="text-2xl md:text-3xl font-bold text-[#d44e72]"><span id="patient-counter">0</span>+</p>
+    <p class="text-[#6b5b62]">mulheres já confiaram na nossa clínica</p>
+  </div>
+
+  <!-- HERO -->
+  <section id="inicio" class="my-10 md:my-16 text-center fade-in">
     <div class="glass-card hero-card p-8 md:p-16 rounded-3xl">
       <img src="assets/images/logo.png" alt="" class="hero-watermark" loading="eager" decoding="async" fetchpriority="high">
       <div class="hero-content">
@@ -112,7 +214,7 @@
   </section>
 
   <!-- BANNER PROMOCIONAL -->
-  <section class="my-12">
+  <section class="my-12 fade-in">
     <div class="gradient-border p-0.5 rounded-[28px]">
       <div class="bg-white rounded-[28px] p-6 md:p-8 flex flex-col md:flex-row items-center justify-between">
         <div class="mb-4 md:mb-0">
@@ -129,18 +231,30 @@
   </section>
 
   <!-- SERVIÇOS -->
-  <section id="servicos" class="my-20">
+  <section id="servicos" class="my-20 fade-in">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nossos Serviços</h2>
     <p class="text-[#6b5b62] text-center mb-12">Cuidado integral para todas as fases da vida da mulher</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="glass-card p-6"><div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-stethoscope text-[#d44e72] text-xl"></i></div><h3 class="text-xl font-semibold mb-2">Consultas</h3><ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Ginecologia</li><li>• Obstetrícia</li><li>• Pré-natal</li><li>• Planejamento familiar</li></ul></div>
-      <div class="glass-card p-6"><div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-microscope text-[#d44e72] text-xl"></i></div><h3 class="text-xl font-semibold mb-2">Exames</h3><ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Ultrassom</li><li>• Papanicolau</li><li>• Colposcopia</li><li>• Laboratoriais</li></ul></div>
-      <div class="glass-card p-6"><div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-syringe text-[#d44e72] text-xl"></i></div><h3 class="text-xl font-semibold mb-2">Procedimentos</h3><ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Inserção de DIU</li><li>• Implante hormonal</li><li>• Pequenas cirurgias</li><li>• Biópsia</li></ul></div>
+      <div class="glass-card p-6">
+        <div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-stethoscope text-[#d44e72] text-xl"></i></div>
+        <h3 class="text-xl font-semibold mb-2">Consultas</h3>
+        <ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Ginecologia</li><li>• Obstetrícia</li><li>• Pré-natal</li><li>• Planejamento familiar</li></ul>
+      </div>
+      <div class="glass-card p-6">
+        <div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-microscope text-[#d44e72] text-xl"></i></div>
+        <h3 class="text-xl font-semibold mb-2">Exames</h3>
+        <ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Ultrassom</li><li>• Papanicolau</li><li>• Colposcopia</li><li>• Laboratoriais</li></ul>
+      </div>
+      <div class="glass-card p-6">
+        <div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-syringe text-[#d44e72] text-xl"></i></div>
+        <h3 class="text-xl font-semibold mb-2">Procedimentos</h3>
+        <ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Inserção de DIU</li><li>• Implante hormonal</li><li>• Pequenas cirurgias</li><li>• Biópsia</li></ul>
+      </div>
     </div>
   </section>
 
-  <!-- DESTAQUE -->
-  <section id="destaque" class="my-20">
+  <!-- DESTAQUE DR. JELSON (ANTES DAS AVALIAÇÕES) -->
+  <section id="destaque" class="my-20 fade-in">
     <div class="glass-card p-8 md:p-10">
       <div class="flex flex-col md:flex-row gap-8 items-center">
         <div class="md:w-1/2">
@@ -152,13 +266,15 @@
           </div>
           <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20com%20o%20Dr.%20Jelson%20Batista." target="_blank" class="btn-primary inline-block mt-8">Agendar com Dr. Jelson <i class="fab fa-whatsapp ml-2"></i></a>
         </div>
-        <div class="md:w-1/2 flex justify-center"><div class="w-48 h-48 rounded-full bg-gradient-to-br from-[#d44e72]/20 to-[#f4a261]/20 flex items-center justify-center border-2 border-[#d44e72]/20"><i class="fas fa-user-md text-7xl text-[#d44e72]"></i></div></div>
+        <div class="md:w-1/2 flex justify-center">
+          <div class="w-48 h-48 rounded-full bg-gradient-to-br from-[#d44e72]/20 to-[#f4a261]/20 flex items-center justify-center border-2 border-[#d44e72]/20"><i class="fas fa-user-md text-7xl text-[#d44e72]"></i></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- AVALIAÇÕES -->
-  <section id="avaliacoes" class="my-20">
+  <section id="avaliacoes" class="my-20 fade-in">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center">O que dizem nossas pacientes</h2>
     <p class="text-[#6b5b62] text-center mb-12">Depoimentos de quem confia na Clínica Stefanie Viana</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -169,7 +285,7 @@
   </section>
 
   <!-- INSTAGRAM -->
-  <section id="instagram" class="my-20">
+  <section id="instagram" class="my-20 fade-in">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nosso Instagram</h2>
     <p class="text-[#6b5b62] text-center mb-2">Fique por dentro das novidades da clínica</p>
     <div class="max-w-6xl mx-auto">
@@ -181,7 +297,7 @@
   </section>
 
   <!-- SOBRE + LOCALIZAÇÃO -->
-  <section id="sobre" class="my-20 grid grid-cols-1 lg:grid-cols-2 gap-8">
+  <section id="sobre" class="my-20 grid grid-cols-1 lg:grid-cols-2 gap-8 fade-in">
     <div class="glass-card p-8">
       <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-heart text-[#d44e72]"></i> Sobre a Clínica</h2>
       <p class="text-[#6b5b62] leading-relaxed mb-4">A <strong>Clínica Stefanie Viana</strong> é referência em saúde da mulher em Trairi-CE, com atendimento humanizado e equipamentos modernos.</p>
@@ -217,14 +333,56 @@
   <div class="text-center text-[#6b5b62] text-xs mt-8 opacity-60">© 2026 Clínica Stefanie Viana · Todos os direitos reservados</div>
 </footer>
 
+<!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+<a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar." target="_blank" class="whatsapp-float" title="Agendar pelo WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
 <script src="assets/js/main.js"></script>
 <script>
+  // Menu mobile
   document.getElementById('menu-toggle').addEventListener('click', function(){
     document.getElementById('mobile-menu').classList.toggle('hidden');
   });
   document.querySelectorAll('#mobile-menu a').forEach(link => {
     link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
   });
+
+  // Fade-in nas seções
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Contador animado de pacientes
+  const counterEl = document.getElementById('patient-counter');
+  if (counterEl) {
+    const target = 500; // número final
+    let count = 0;
+    const speed = 30;
+    const inc = Math.ceil(target / 60);
+    const updateCounter = () => {
+      if (count < target) {
+        count += inc;
+        if (count > target) count = target;
+        counterEl.textContent = count;
+        requestAnimationFrame(updateCounter);
+      }
+    };
+    const counterObserver = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        updateCounter();
+        counterObserver.unobserve(counterEl);
+      }
+    });
+    counterObserver.observe(counterEl);
+  }
 </script>
 </body>
 </html>
