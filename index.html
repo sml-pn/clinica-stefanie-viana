@@ -12,13 +12,24 @@
     *, *::before, *::after { box-sizing: border-box; }
     body { background-color: #fdfbf9; color: #3a2e33; overflow-x: hidden; margin: 0; max-width: 100vw; }
 
-    .glass-card {
+    /* Cards comuns */
+    .glass-card-common {
       background: rgba(255,255,255,0.75);
       backdrop-filter: blur(10px);
       border-radius: 28px;
       box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02);
       border: 1px solid rgba(0,0,0,0.04);
     }
+
+    /* Card Hero com efeito de vidro transparente */
+    .glass-card-hero {
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(20px);
+      border-radius: 28px;
+      box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02);
+      border: 1px solid rgba(255,255,255,0.5);
+    }
+
     .gradient-border {
       background: white;
       border-radius: 28px;
@@ -96,28 +107,26 @@
     /* Container externo para a imagem atrás do card */
     .hero-outer {
       position: relative;
-      overflow: visible;
+      overflow: hidden; /* impede vazamento extremo */
+      border-radius: 28px; /* mesma borda do card */
     }
     .hero-watermark-external {
       position: absolute;
-      top: -15%;
-      left: -10%;
-      width: 120%;
-      height: 120%;
-      object-fit: contain;
-      opacity: 0.08;
-      filter: blur(12px);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110%;      /* um pouco maior que o card */
+      height: 110%;
+      object-fit: cover;
+      opacity: 0.25;     /* mais visível */
+      filter: blur(4px); /* mais nítida */
       pointer-events: none;
       z-index: 0;
     }
-    .hero-card {
+    .hero-card-transparent {
       position: relative;
       z-index: 1;
-      overflow: hidden; /* garante que o conteúdo card fique com bordas arredondadas */
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
+      overflow: hidden;
     }
 
     nav a {
@@ -190,12 +199,12 @@
     <p class="text-[#6b5b62]">mulheres já confiaram na nossa clínica</p>
   </div>
 
-  <!-- HERO COM IMAGEM EXTERNA (VAZANDO PARA FORA DO CARD) -->
+  <!-- HERO COM IMAGEM EXTERNA NÍTIDA E CARD DE VIDRO TRANSPARENTE -->
   <section id="inicio" class="my-10 md:my-16 text-center fade-in hero-outer">
-    <!-- Imagem atrás do card, externa -->
+    <!-- Imagem atrás do card, mais nítida e centralizada -->
     <img src="assets/images/logo.png" alt="" class="hero-watermark-external" loading="eager" decoding="async" fetchpriority="high">
-    <!-- Card de conteúdo com efeito de vidro -->
-    <div class="glass-card hero-card p-8 md:p-16 rounded-3xl">
+    <!-- Card de vidro transparente -->
+    <div class="glass-card-hero hero-card-transparent p-8 md:p-16 rounded-3xl">
       <div class="hero-content">
         <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 max-w-4xl mx-auto text-[#3a2e33]">
           <span class="text-[#d44e72]">Saúde da Mulher</span><br>com acolhimento e excelência
@@ -235,17 +244,17 @@
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nossos Serviços</h2>
     <p class="text-[#6b5b62] text-center mb-12">Cuidado integral para todas as fases da vida da mulher</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="glass-card p-6">
+      <div class="glass-card-common p-6">
         <div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-stethoscope text-[#d44e72] text-xl"></i></div>
         <h3 class="text-xl font-semibold mb-2">Consultas</h3>
         <ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Ginecologia</li><li>• Obstetrícia</li><li>• Pré-natal</li><li>• Planejamento familiar</li></ul>
       </div>
-      <div class="glass-card p-6">
+      <div class="glass-card-common p-6">
         <div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-microscope text-[#d44e72] text-xl"></i></div>
         <h3 class="text-xl font-semibold mb-2">Exames</h3>
         <ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Ultrassom</li><li>• Papanicolau</li><li>• Colposcopia</li><li>• Laboratoriais</li></ul>
       </div>
-      <div class="glass-card p-6">
+      <div class="glass-card-common p-6">
         <div class="w-12 h-12 rounded-full bg-[#d44e72]/10 flex items-center justify-center mb-4"><i class="fas fa-syringe text-[#d44e72] text-xl"></i></div>
         <h3 class="text-xl font-semibold mb-2">Procedimentos</h3>
         <ul class="text-[#6b5b62] space-y-2 text-sm"><li>• Inserção de DIU</li><li>• Implante hormonal</li><li>• Pequenas cirurgias</li><li>• Biópsia</li></ul>
@@ -255,7 +264,7 @@
 
   <!-- DESTAQUE DR. JELSON -->
   <section id="destaque" class="my-20 fade-in">
-    <div class="glass-card p-8 md:p-10">
+    <div class="glass-card-common p-8 md:p-10">
       <div class="flex flex-col md:flex-row gap-8 items-center">
         <div class="md:w-1/2">
           <span class="text-sm font-semibold uppercase tracking-wider text-[#d44e72]">Destaque da Semana</span>
@@ -278,9 +287,9 @@
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center">O que dizem nossas pacientes</h2>
     <p class="text-[#6b5b62] text-center mb-12">Depoimentos de quem confia na Clínica Stefanie Viana</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="glass-card p-6"><div class="flex items-center gap-1 text-[#f4a261] mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-[#3a2e33] italic mb-4">"Atendimento maravilhoso, a Dra. Stefanie é super atenciosa!"</p><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-[#d44e72]/20 flex items-center justify-center text-[#d44e72] font-bold">AP</div><div><p class="font-medium">Ana Paula</p><p class="text-xs text-[#6b5b62]">2 semanas atrás</p></div></div></div>
-      <div class="glass-card p-6"><div class="flex items-center gap-1 text-[#f4a261] mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-[#3a2e33] italic mb-4">"Clínica muito limpa e organizada. Fiz meu pré-natal todo aqui!"</p><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-[#d44e72]/20 flex items-center justify-center text-[#d44e72] font-bold">CS</div><div><p class="font-medium">Camila Sousa</p><p class="text-xs text-[#6b5b62]">1 mês atrás</p></div></div></div>
-      <div class="glass-card p-6"><div class="flex items-center gap-1 text-[#f4a261] mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-[#3a2e33] italic mb-4">"Excelente profissional, muito competente e humana."</p><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-[#d44e72]/20 flex items-center justify-center text-[#d44e72] font-bold">MC</div><div><p class="font-medium">Maria do Carmo</p><p class="text-xs text-[#6b5b62]">3 meses atrás</p></div></div></div>
+      <div class="glass-card-common p-6"><div class="flex items-center gap-1 text-[#f4a261] mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-[#3a2e33] italic mb-4">"Atendimento maravilhoso, a Dra. Stefanie é super atenciosa!"</p><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-[#d44e72]/20 flex items-center justify-center text-[#d44e72] font-bold">AP</div><div><p class="font-medium">Ana Paula</p><p class="text-xs text-[#6b5b62]">2 semanas atrás</p></div></div></div>
+      <div class="glass-card-common p-6"><div class="flex items-center gap-1 text-[#f4a261] mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-[#3a2e33] italic mb-4">"Clínica muito limpa e organizada. Fiz meu pré-natal todo aqui!"</p><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-[#d44e72]/20 flex items-center justify-center text-[#d44e72] font-bold">CS</div><div><p class="font-medium">Camila Sousa</p><p class="text-xs text-[#6b5b62]">1 mês atrás</p></div></div></div>
+      <div class="glass-card-common p-6"><div class="flex items-center gap-1 text-[#f4a261] mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="text-[#3a2e33] italic mb-4">"Excelente profissional, muito competente e humana."</p><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-full bg-[#d44e72]/20 flex items-center justify-center text-[#d44e72] font-bold">MC</div><div><p class="font-medium">Maria do Carmo</p><p class="text-xs text-[#6b5b62]">3 meses atrás</p></div></div></div>
     </div>
   </section>
 
@@ -298,12 +307,12 @@
 
   <!-- SOBRE + LOCALIZAÇÃO -->
   <section id="sobre" class="my-20 grid grid-cols-1 lg:grid-cols-2 gap-8 fade-in">
-    <div class="glass-card p-8">
+    <div class="glass-card-common p-8">
       <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-heart text-[#d44e72]"></i> Sobre a Clínica</h2>
       <p class="text-[#6b5b62] leading-relaxed mb-4">A <strong>Clínica Stefanie Viana</strong> é referência em saúde da mulher em Trairi-CE, com atendimento humanizado e equipamentos modernos.</p>
       <ul class="space-y-3 text-[#6b5b62]"><li class="flex items-center gap-2"><i class="fas fa-check-circle text-[#d44e72]"></i> Especialista em saúde da mulher</li><li class="flex items-center gap-2"><i class="fas fa-check-circle text-[#d44e72]"></i> Atendimento humanizado</li><li class="flex items-center gap-2"><i class="fas fa-check-circle text-[#d44e72]"></i> Equipamentos modernos</li></ul>
     </div>
-    <div id="localizacao" class="glass-card p-8">
+    <div id="localizacao" class="glass-card-common p-8">
       <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-map-pin text-[#d44e72]"></i> Onde estamos</h2>
       <p class="text-[#6b5b62] mb-4"><i class="fas fa-location-dot mr-2 text-[#d44e72]"></i>R. Manoel Teixeira, 200 - Centro, Trairi - CE</p>
       <div class="mb-4 rounded-xl overflow-hidden border border-black/5 shadow-sm">
