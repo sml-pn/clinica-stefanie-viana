@@ -12,6 +12,7 @@
     *, *::before, *::after { box-sizing: border-box; }
     body { background-color: #fdfbf9; color: #3a2e33; overflow-x: hidden; margin: 0; max-width: 100vw; }
 
+    /* ===== CARDS COMUNS ===== */
     .glass-card-common {
       background: rgba(255,255,255,0.75);
       backdrop-filter: blur(10px);
@@ -26,6 +27,7 @@
       border: 1px solid rgba(0,0,0,0.04);
     }
 
+    /* ===== BOTÕES ===== */
     .btn-primary {
       background: #d44e72;
       color: white;
@@ -49,6 +51,7 @@
     }
     .btn-outline:hover { background: rgba(212,78,114,0.04); border-color: #d44e72; }
 
+    /* ===== WHATSAPP FLUTUANTE ===== */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -68,6 +71,7 @@
     }
     .whatsapp-float:hover { transform: scale(1.1); }
 
+    /* ===== BARRA DE URGÊNCIA ===== */
     .urgency-bar {
       background: #d44e72;
       color: white;
@@ -93,7 +97,7 @@
       transform: translateY(0);
     }
 
-    /* ===== HERO À PROVA DE LINHAS ===== */
+    /* ===== HERO BLINDADO ===== */
     .hero-fullscreen {
       position: relative;
       min-height: 90vh;
@@ -105,7 +109,7 @@
       padding: calc(var(--header-height) + var(--urgency-height) + 2rem) 1rem 4rem;
       text-align: center;
       background-color: #fdfbf9;
-      transform: translateZ(0);        /* container na mesma camada GPU */
+      transform: translateZ(0);
     }
     @media (min-width: 768px) {
       .hero-fullscreen {
@@ -125,13 +129,12 @@
       background-position: center;
       background-repeat: no-repeat;
       opacity: 0.35;
-      backface-visibility: hidden;     /* forçar composição GPU */
+      backface-visibility: hidden;
       transform: translateZ(0);
       will-change: transform;
       z-index: 0;
     }
 
-    /* Overlay com top negativo e altura extra para esconder qualquer gap */
     .hero-overlay {
       position: absolute;
       top: -1px;
@@ -147,17 +150,6 @@
       pointer-events: none;
     }
 
-    /* Caso queira usar máscara ao invés de alpha (nível super blindado) – descomente abaixo */
-    /*
-    .hero-overlay.use-mask::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: #fdfbf9;
-      mask-image: linear-gradient(to bottom, transparent 0%, black 80%);
-    }
-    */
-
     .hero-content {
       position: relative;
       z-index: 2;
@@ -169,6 +161,37 @@
     }
     .hero-content p {
       text-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    }
+
+    /* ===== HEADER & MENU ===== */
+    header {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+
+    /* Ícone do menu hambúrguer animado */
+    #menu-toggle i {
+      transition: transform 0.3s ease;
+    }
+    #menu-toggle.active i {
+      transform: rotate(90deg);
+    }
+
+    /* Menu mobile com transição suave */
+    #mobile-menu {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      margin-top: 0.5rem;
+    }
+    #mobile-menu.open {
+      max-height: 500px;   /* valor suficiente para o conteúdo */
+      opacity: 1;
+      padding: 1rem 1.5rem;
     }
 
     nav a {
@@ -195,41 +218,47 @@
         <span class="text-[#d44e72]">Clínica</span> Stefanie Viana
       </div>
     </div>
-    <div class="flex items-center gap-3">
-      <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="hidden md:block btn-primary text-sm !py-2 !px-5 flex-shrink-0">
+
+    <!-- Navegação desktop -->
+    <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+      <a href="#inicio" class="hover:text-[#d44e72] transition">Início</a>
+      <a href="#servicos" class="hover:text-[#d44e72] transition">Serviços</a>
+      <a href="#destaque" class="hover:text-[#d44e72] transition">Destaque</a>
+      <a href="#avaliacoes" class="hover:text-[#d44e72] transition">Avaliações</a>
+      <a href="#instagram" class="hover:text-[#d44e72] transition">Instagram</a>
+      <a href="#sobre" class="hover:text-[#d44e72] transition">Sobre</a>
+      <a href="#localizacao" class="hover:text-[#d44e72] transition">Localização</a>
+      <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="btn-primary text-sm !py-2 !px-5 ml-4">
         Agendar <i class="fab fa-whatsapp ml-2"></i>
       </a>
-      <button id="menu-toggle" class="md:hidden text-2xl text-[#3a2e33] flex-shrink-0">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
+    </nav>
+
+    <!-- Botão mobile -->
+    <button id="menu-toggle" class="md:hidden text-2xl text-[#3a2e33] focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
   </div>
-  <nav class="hidden md:flex items-center justify-center space-x-4 lg:space-x-6 xl:space-x-8 text-sm font-medium mt-3 flex-wrap">
-    <a href="#inicio" class="hover:text-[#d44e72] transition">Início</a>
-    <a href="#servicos" class="hover:text-[#d44e72] transition">Serviços</a>
-    <a href="#destaque" class="hover:text-[#d44e72] transition">Destaque</a>
-    <a href="#avaliacoes" class="hover:text-[#d44e72] transition">Avaliações</a>
-    <a href="#instagram" class="hover:text-[#d44e72] transition">Instagram</a>
-    <a href="#sobre" class="hover:text-[#d44e72] transition">Sobre</a>
-    <a href="#localizacao" class="hover:text-[#d44e72] transition">Localização</a>
-  </nav>
-  <div id="mobile-menu" class="md:hidden hidden mt-4 pb-2 flex flex-col space-y-3 text-sm absolute top-full left-0 right-0 bg-white/95 backdrop-blur-md shadow-md px-4">
-    <a href="#inicio" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Início</a>
-    <a href="#servicos" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Serviços</a>
-    <a href="#destaque" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Destaque</a>
-    <a href="#avaliacoes" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Avaliações</a>
-    <a href="#instagram" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Instagram</a>
-    <a href="#sobre" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Sobre</a>
-    <a href="#localizacao" class="text-[#3a2e33] hover:text-[#d44e72] py-1">Localização</a>
-    <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Quero%20agendar%20uma%20consulta%20na%20Cl%C3%ADnica%20Stefanie%20Viana." target="_blank" class="btn-primary text-center !py-2 mt-2">
-      Agendar pelo WhatsApp
-    </a>
+
+  <!-- Menu mobile (escondido por padrão) -->
+  <div id="mobile-menu" class="md:hidden">
+    <nav class="flex flex-col space-y-3">
+      <a href="#inicio" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Início</a>
+      <a href="#servicos" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Serviços</a>
+      <a href="#destaque" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Destaque</a>
+      <a href="#avaliacoes" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Avaliações</a>
+      <a href="#instagram" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Instagram</a>
+      <a href="#sobre" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Sobre</a>
+      <a href="#localizacao" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Localização</a>
+      <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Quero%20agendar%20uma%20consulta%20na%20Cl%C3%ADnica%20Stefanie%20Viana." target="_blank" class="btn-primary text-center !py-2 mt-2">
+        Agendar pelo WhatsApp
+      </a>
+    </nav>
   </div>
 </header>
 
 <main style="overflow-x: hidden; max-width: 100vw;">
 
-  <!-- HERO BLINDADO CONTRA LINHAS -->
+  <!-- HERO -->
   <section id="inicio" class="hero-fullscreen fade-in">
     <div class="hero-bg-image" id="parallax-bg"></div>
     <div class="hero-overlay"></div>
@@ -247,13 +276,13 @@
     </div>
   </section>
 
-  <!-- CONTADOR DE PACIENTES (abaixo do hero) -->
+  <!-- CONTADOR -->
   <div class="text-center py-5 overflow-hidden">
     <p class="text-2xl md:text-3xl font-bold text-[#d44e72]"><span id="patient-counter">0</span>+</p>
     <p class="text-[#6b5b62]">mulheres já confiaram na nossa clínica</p>
   </div>
 
-  <!-- BANNER PROMOCIONAL (largura total) -->
+  <!-- BANNER PROMOCIONAL -->
   <div class="-mx-4 md:-mx-6 lg:-mx-8">
     <section class="my-12 fade-in px-4 md:px-6 lg:px-8">
       <div class="gradient-border p-0.5 rounded-[28px] max-w-7xl mx-auto">
@@ -368,12 +397,21 @@
 
 <script src="assets/js/main.js"></script>
 <script>
-  // Menu mobile
-  document.getElementById('menu-toggle').addEventListener('click', function(){
-    document.getElementById('mobile-menu').classList.toggle('hidden');
+  // Menu mobile com animação
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  menuToggle.addEventListener('click', function() {
+    this.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
   });
+
+  // Fecha o menu ao clicar em um link (opcional, melhora usabilidade)
   document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      mobileMenu.classList.remove('open');
+    });
   });
 
   // Fade-in nas seções
@@ -412,7 +450,7 @@
     counterObserver.observe(counterEl);
   }
 
-  // Parallax suave (sem scale)
+  // Parallax suave
   const parallaxBg = document.getElementById('parallax-bg');
   if (parallaxBg) {
     window.addEventListener('scroll', () => {
