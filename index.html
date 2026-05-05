@@ -7,12 +7,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/custom.css">
   <style>
     *, *::before, *::after { box-sizing: border-box; }
     body { background-color: #fdfbf9; color: #3a2e33; overflow-x: hidden; margin: 0; max-width: 100vw; }
 
-    /* ===== CARDS COMUNS ===== */
     .glass-card-common {
       background: rgba(255,255,255,0.75);
       backdrop-filter: blur(10px);
@@ -21,205 +19,107 @@
       border: 1px solid rgba(0,0,0,0.04);
     }
     .gradient-border {
-      background: white;
-      border-radius: 28px;
+      background: white; border-radius: 28px;
       box-shadow: 0 10px 30px -5px rgba(0,0,0,0.05), 0 1px 3px rgba(0,0,0,0.02);
       border: 1px solid rgba(0,0,0,0.04);
     }
 
-    /* ===== BOTÕES ===== */
     .btn-primary {
-      background: #d44e72;
-      color: white;
-      border-radius: 40px;
-      padding: 0.75rem 2rem;
-      font-weight: 500;
-      transition: all 0.25s;
-      white-space: nowrap;
-      animation: pulse 2s infinite;
+      background: #d44e72; color: white; border-radius: 40px; padding: 0.75rem 2rem;
+      font-weight: 500; transition: all 0.25s; white-space: nowrap; animation: pulse 2s infinite;
     }
     .btn-primary:hover { background: #a63655; transform: translateY(-2px); }
     .btn-outline {
-      background: transparent;
-      border: 1.5px solid #e57a95;
-      color: #d44e72;
-      border-radius: 40px;
-      padding: 0.75rem 2rem;
-      font-weight: 500;
-      transition: all 0.25s;
+      background: transparent; border: 1.5px solid #e57a95; color: #d44e72;
+      border-radius: 40px; padding: 0.75rem 2rem; font-weight: 500; transition: all 0.25s;
       white-space: nowrap;
     }
     .btn-outline:hover { background: rgba(212,78,114,0.04); border-color: #d44e72; }
 
-    /* ===== WHATSAPP FLUTUANTE ===== */
     .whatsapp-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 30px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-      z-index: 999;
-      transition: transform 0.2s;
+      position: fixed; bottom: 20px; right: 20px; background: #25D366; color: white;
+      width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      z-index: 999; transition: transform 0.2s;
     }
     .whatsapp-float:hover { transform: scale(1.1); }
 
-    /* ===== BARRA DE URGÊNCIA ===== */
     .urgency-bar {
-      background: #d44e72;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      letter-spacing: 0.3px;
+      background: #d44e72; color: white; text-align: center; padding: 10px;
+      font-weight: 600; font-size: 0.95rem; letter-spacing: 0.3px;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.03); }
-    }
+    @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-    /* ===== HERO BLINDADO ===== */
+    /* Hero */
     .hero-fullscreen {
-      position: relative;
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
+      position: relative; min-height: 90vh; display: flex; align-items: center;
+      justify-content: center; overflow: hidden;
       margin-top: calc(-1 * (var(--header-height) + var(--urgency-height)));
       padding: calc(var(--header-height) + var(--urgency-height) + 2rem) 1rem 4rem;
-      text-align: center;
-      background-color: #fdfbf9;
-      transform: translateZ(0);
+      text-align: center; background-color: #fdfbf9; transform: translateZ(0);
     }
-    @media (min-width: 768px) {
-      .hero-fullscreen {
-        min-height: 100vh;
-        padding-bottom: 6rem;
-      }
-    }
+    @media (min-width: 768px) { .hero-fullscreen { min-height: 100vh; padding-bottom: 6rem; } }
 
     .hero-bg-image {
-      position: absolute;
-      top: -10%;
-      left: 0;
-      width: 100%;
-      height: 110%;
-      background-image: url('assets/images/logo.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.35;
-      backface-visibility: hidden;
-      transform: translateZ(0);
-      will-change: transform;
-      z-index: 0;
+      position: absolute; top: -10%; left: 0; width: 100%; height: 110%;
+      background-image: url('assets/images/logo.png'); background-size: cover;
+      background-position: center; background-repeat: no-repeat; opacity: 0.35;
+      backface-visibility: hidden; transform: translateZ(0); will-change: transform; z-index: 0;
     }
-
     .hero-overlay {
-      position: absolute;
-      top: -1px;
-      left: 0;
-      width: 100%;
-      height: calc(105% + 2px);
-      background: linear-gradient(180deg, 
-        rgba(253,251,249,0.4) 0%, 
-        rgba(253,251,249,0.7) 50%,
-        rgba(253,251,249,0.95) 85%,
-        #fdfbf9 100%);
-      z-index: 1;
-      pointer-events: none;
+      position: absolute; top: -1px; left: 0; width: 100%; height: calc(105% + 2px);
+      background: linear-gradient(180deg, rgba(253,251,249,0.4) 0%, rgba(253,251,249,0.7) 50%,
+                  rgba(253,251,249,0.95) 85%, #fdfbf9 100%);
+      z-index: 1; pointer-events: none;
     }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 800px;
-      width: 100%;
-    }
-    .hero-content h1 {
-      text-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .hero-content p {
-      text-shadow: 0 1px 4px rgba(0,0,0,0.05);
-    }
+    .hero-content { position: relative; z-index: 2; max-width: 800px; width: 100%; }
+    .hero-content h1 { text-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .hero-content p { text-shadow: 0 1px 4px rgba(0,0,0,0.05); }
 
     /* ===== HEADER & MENU ===== */
-    header {
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    header { box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+
+    /* Ícone hambúrguer → X via pseudo-elemento */
+    #menu-toggle i { transition: transform 0.3s ease, opacity 0.3s ease; }
+    #menu-toggle.active i { opacity: 0; transform: rotate(90deg); }
+    #menu-toggle.active::after {
+      content: "\f00d"; font-family: "Font Awesome 6 Free"; font-weight: 900;
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      font-size: 1.5rem; color: #3a2e33;
     }
 
-    /* Ícone do menu hambúrguer animado */
-    #menu-toggle i {
-      transition: transform 0.3s ease;
-    }
-    #menu-toggle.active i {
-      transform: rotate(90deg);
-    }
-
-    /* Menu mobile com transição suave */
+    /* Menu mobile com altura dinâmica */
     #mobile-menu {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
+      max-height: 0; opacity: 0; overflow: hidden;
       transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      border-radius: 0 0 16px 16px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      background: rgba(255,255,255,0.95); backdrop-filter: blur(12px);
+      border-radius: 0 0 16px 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
       margin-top: 0.5rem;
     }
     #mobile-menu.open {
-      max-height: 500px;   /* valor suficiente para o conteúdo */
-      opacity: 1;
-      padding: 1rem 1.5rem;
+      opacity: 1; padding: 1rem 1.5rem;
     }
 
-    nav a {
-      color: #3a2e33;
-      opacity: 0.8;
-      white-space: nowrap;
-    }
+    nav a { color: #3a2e33; opacity: 0.8; white-space: nowrap; }
     nav a:hover { color: #d44e72; opacity: 1; }
   </style>
 </head>
 <body class="antialiased" style="overflow-x: hidden; max-width: 100vw; --header-height: 80px; --urgency-height: 40px;">
 
 <!-- BARRA DE URGÊNCIA -->
-<div class="urgency-bar">
-  ⚠️ Últimas vagas para esta semana – agende agora e garanta seu horário!
-</div>
+<div class="urgency-bar">⚠️ Últimas vagas para esta semana – agende agora e garanta seu horário!</div>
 
 <!-- HEADER -->
 <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8" style="max-width: 100vw; overflow-x: hidden; height: var(--header-height);">
   <div class="max-w-7xl mx-auto h-full flex items-center justify-between">
     <div class="flex items-center gap-3">
       <img src="assets/images/logo.png" alt="Clínica Stefanie Viana" class="h-12 w-auto rounded-2xl flex-shrink-0" width="48" height="48" decoding="async" loading="eager" fetchpriority="high">
-      <div class="text-2xl font-bold tracking-tight flex-shrink-0">
-        <span class="text-[#d44e72]">Clínica</span> Stefanie Viana
-      </div>
+      <div class="text-2xl font-bold tracking-tight flex-shrink-0"><span class="text-[#d44e72]">Clínica</span> Stefanie Viana</div>
     </div>
-
-    <!-- Navegação desktop -->
     <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
       <a href="#inicio" class="hover:text-[#d44e72] transition">Início</a>
       <a href="#servicos" class="hover:text-[#d44e72] transition">Serviços</a>
@@ -228,18 +128,12 @@
       <a href="#instagram" class="hover:text-[#d44e72] transition">Instagram</a>
       <a href="#sobre" class="hover:text-[#d44e72] transition">Sobre</a>
       <a href="#localizacao" class="hover:text-[#d44e72] transition">Localização</a>
-      <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="btn-primary text-sm !py-2 !px-5 ml-4">
-        Agendar <i class="fab fa-whatsapp ml-2"></i>
-      </a>
+      <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="btn-primary text-sm !py-2 !px-5 ml-4">Agendar <i class="fab fa-whatsapp ml-2"></i></a>
     </nav>
-
-    <!-- Botão mobile -->
-    <button id="menu-toggle" class="md:hidden text-2xl text-[#3a2e33] focus:outline-none">
+    <button id="menu-toggle" class="md:hidden text-2xl text-[#3a2e33] focus:outline-none relative" style="width: 40px; height: 40px;">
       <i class="fas fa-bars"></i>
     </button>
   </div>
-
-  <!-- Menu mobile (escondido por padrão) -->
   <div id="mobile-menu" class="md:hidden">
     <nav class="flex flex-col space-y-3">
       <a href="#inicio" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Início</a>
@@ -249,26 +143,18 @@
       <a href="#instagram" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Instagram</a>
       <a href="#sobre" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Sobre</a>
       <a href="#localizacao" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Localização</a>
-      <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Quero%20agendar%20uma%20consulta%20na%20Cl%C3%ADnica%20Stefanie%20Viana." target="_blank" class="btn-primary text-center !py-2 mt-2">
-        Agendar pelo WhatsApp
-      </a>
+      <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Quero%20agendar%20uma%20consulta%20na%20Cl%C3%ADnica%20Stefanie%20Viana." target="_blank" class="btn-primary text-center !py-2 mt-2">Agendar pelo WhatsApp</a>
     </nav>
   </div>
 </header>
 
 <main style="overflow-x: hidden; max-width: 100vw;">
-
-  <!-- HERO -->
   <section id="inicio" class="hero-fullscreen fade-in">
     <div class="hero-bg-image" id="parallax-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 text-[#3a2e33]">
-        <span class="text-[#d44e72]">Saúde da Mulher</span><br>com acolhimento e excelência
-      </h1>
-      <p class="text-lg md:text-xl text-[#6b5b62] mb-8 max-w-2xl mx-auto">
-        Descubra um cuidado inovador que transforma sua experiência de bem-estar.
-      </p>
+      <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4 text-[#3a2e33]"><span class="text-[#d44e72]">Saúde da Mulher</span><br>com acolhimento e excelência</h1>
+      <p class="text-lg md:text-xl text-[#6b5b62] mb-8 max-w-2xl mx-auto">Descubra um cuidado inovador que transforma sua experiência de bem-estar.</p>
       <div class="flex flex-wrap justify-center gap-4">
         <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Quero%20agendar%20minha%20consulta%20e%20conhecer%20os%20servi%C3%A7os." target="_blank" class="btn-primary text-lg">Agende sua consulta <i class="fas fa-arrow-right ml-2"></i></a>
         <a href="#servicos" class="btn-outline text-lg">Ver todos os serviços</a>
@@ -276,13 +162,11 @@
     </div>
   </section>
 
-  <!-- CONTADOR -->
   <div class="text-center py-5 overflow-hidden">
     <p class="text-2xl md:text-3xl font-bold text-[#d44e72]"><span id="patient-counter">0</span>+</p>
     <p class="text-[#6b5b62]">mulheres já confiaram na nossa clínica</p>
   </div>
 
-  <!-- BANNER PROMOCIONAL -->
   <div class="-mx-4 md:-mx-6 lg:-mx-8">
     <section class="my-12 fade-in px-4 md:px-6 lg:px-8">
       <div class="gradient-border p-0.5 rounded-[28px] max-w-7xl mx-auto">
@@ -301,7 +185,6 @@
     </section>
   </div>
 
-  <!-- SERVIÇOS -->
   <section id="servicos" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nossos Serviços</h2>
     <p class="text-[#6b5b62] text-center mb-12">Cuidado integral para todas as fases da vida da mulher</p>
@@ -312,25 +195,15 @@
     </div>
   </section>
 
-  <!-- DESTAQUE DR. JELSON -->
   <section id="destaque" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
     <div class="glass-card-common p-8 md:p-10">
       <div class="flex flex-col md:flex-row gap-8 items-center">
-        <div class="md:w-1/2">
-          <span class="text-sm font-semibold uppercase tracking-wider text-[#d44e72]">Destaque da Semana</span>
-          <h2 class="text-3xl md:text-4xl font-bold mt-2">Dr. Jelson Batista</h2>
-          <p class="text-[#6b5b62] mt-1 text-lg">Clínico Geral · CRM 21146</p>
-          <div class="mt-6 grid grid-cols-2 gap-3 text-sm">
-            <span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Check-up</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Obesidade</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Hipertensão</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Diabetes</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Colesterol</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Gastrite</span>
-          </div>
-          <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20com%20o%20Dr.%20Jelson%20Batista." target="_blank" class="btn-primary inline-block mt-8">Agendar com Dr. Jelson <i class="fab fa-whatsapp ml-2"></i></a>
-        </div>
+        <div class="md:w-1/2"><span class="text-sm font-semibold uppercase tracking-wider text-[#d44e72]">Destaque da Semana</span><h2 class="text-3xl md:text-4xl font-bold mt-2">Dr. Jelson Batista</h2><p class="text-[#6b5b62] mt-1 text-lg">Clínico Geral · CRM 21146</p><div class="mt-6 grid grid-cols-2 gap-3 text-sm"><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Check-up</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Obesidade</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Hipertensão</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Diabetes</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Colesterol</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Gastrite</span></div><a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20com%20o%20Dr.%20Jelson%20Batista." target="_blank" class="btn-primary inline-block mt-8">Agendar com Dr. Jelson <i class="fab fa-whatsapp ml-2"></i></a></div>
         <div class="md:w-1/2 flex justify-center"><div class="w-48 h-48 rounded-full bg-gradient-to-br from-[#d44e72]/20 to-[#f4a261]/20 flex items-center justify-center border-2 border-[#d44e72]/20"><i class="fas fa-user-md text-7xl text-[#d44e72]"></i></div></div>
       </div>
     </div>
   </section>
 
-  <!-- AVALIAÇÕES -->
   <section id="avaliacoes" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center">O que dizem nossas pacientes</h2>
     <p class="text-[#6b5b62] text-center mb-12">Depoimentos de quem confia na Clínica Stefanie Viana</p>
@@ -341,19 +214,15 @@
     </div>
   </section>
 
-  <!-- INSTAGRAM -->
   <section id="instagram" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nosso Instagram</h2>
     <p class="text-[#6b5b62] text-center mb-2">Fique por dentro das novidades da clínica</p>
     <div class="max-w-6xl mx-auto">
       <iframe src="https://emb.fouita.com/widget/0x4329d2/ftwy4tsw" title="Clínica Stefanie Viana" width="100%" height="600" frameborder="0" style="border-radius: 16px; display: block; margin: 0 auto; max-width: 100%;"></iframe>
     </div>
-    <div class="text-center mt-6">
-      <a href="https://www.instagram.com/clinicastefanieviana/" target="_blank" class="btn-outline"><i class="fab fa-instagram mr-2"></i> Seguir no Instagram</a>
-    </div>
+    <div class="text-center mt-6"><a href="https://www.instagram.com/clinicastefanieviana/" target="_blank" class="btn-outline"><i class="fab fa-instagram mr-2"></i> Seguir no Instagram</a></div>
   </section>
 
-  <!-- SOBRE + LOCALIZAÇÃO -->
   <section id="sobre" class="my-20 grid grid-cols-1 lg:grid-cols-2 gap-8 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
     <div class="glass-card-common p-8">
       <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-heart text-[#d44e72]"></i> Sobre a Clínica</h2>
@@ -379,43 +248,43 @@
   <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
     <div><p class="text-xl font-bold">Stefanie Viana</p><p class="text-[#6b5b62] text-sm">Saúde da Mulher · Trairi-CE</p></div>
     <div class="flex gap-4 md:gap-6 text-sm flex-wrap justify-center">
-      <a href="#inicio" class="text-[#6b5b62] hover:text-[#d44e72]">Início</a>
-      <a href="#servicos" class="text-[#6b5b62] hover:text-[#d44e72]">Serviços</a>
-      <a href="#destaque" class="text-[#6b5b62] hover:text-[#d44e72]">Destaque</a>
-      <a href="#avaliacoes" class="text-[#6b5b62] hover:text-[#d44e72]">Avaliações</a>
-      <a href="#instagram" class="text-[#6b5b62] hover:text-[#d44e72]">Instagram</a>
-      <a href="#sobre" class="text-[#6b5b62] hover:text-[#d44e72]">Contato</a>
+      <a href="#inicio" class="text-[#6b5b62] hover:text-[#d44e72]">Início</a><a href="#servicos" class="text-[#6b5b62] hover:text-[#d44e72]">Serviços</a><a href="#destaque" class="text-[#6b5b62] hover:text-[#d44e72]">Destaque</a><a href="#avaliacoes" class="text-[#6b5b62] hover:text-[#d44e72]">Avaliações</a><a href="#instagram" class="text-[#6b5b62] hover:text-[#d44e72]">Instagram</a><a href="#sobre" class="text-[#6b5b62] hover:text-[#d44e72]">Contato</a>
     </div>
   </div>
   <div class="text-center text-[#6b5b62] text-xs mt-8 opacity-60">© 2026 Clínica Stefanie Viana · Todos os direitos reservados</div>
 </footer>
 
-<!-- BOTÃO FLUTUANTE DO WHATSAPP -->
-<a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar." target="_blank" class="whatsapp-float" title="Agendar pelo WhatsApp">
-  <i class="fab fa-whatsapp"></i>
-</a>
+<a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar." target="_blank" class="whatsapp-float" title="Agendar pelo WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
-<script src="assets/js/main.js"></script>
 <script>
-  // Menu mobile com animação
+  // ===== MENU MOBILE REFINADO =====
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
-  
-  menuToggle.addEventListener('click', function() {
+
+  menuToggle.addEventListener('click', function () {
     this.classList.toggle('active');
-    mobileMenu.classList.toggle('open');
+
+    if (mobileMenu.classList.contains('open')) {
+      // Fecha
+      mobileMenu.style.maxHeight = null;
+      mobileMenu.classList.remove('open');
+    } else {
+      // Abre com altura exata do conteúdo
+      mobileMenu.classList.add('open');
+      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+    }
   });
 
-  // Fecha o menu ao clicar em um link (opcional, melhora usabilidade)
+  // Fecha ao clicar em qualquer link do menu mobile
   document.querySelectorAll('#mobile-menu a').forEach(link => {
     link.addEventListener('click', () => {
       menuToggle.classList.remove('active');
+      mobileMenu.style.maxHeight = null;
       mobileMenu.classList.remove('open');
     });
   });
 
-  // Fade-in nas seções
-  const fadeEls = document.querySelectorAll('.fade-in');
+  // ===== FADE-IN SEÇÕES =====
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -424,14 +293,12 @@
       }
     });
   }, { threshold: 0.2 });
-  fadeEls.forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // Contador animado de pacientes
+  // ===== CONTADOR ANIMADO =====
   const counterEl = document.getElementById('patient-counter');
   if (counterEl) {
-    const target = 500;
-    let count = 0;
-    const speed = 30;
+    const target = 500; let count = 0;
     const inc = Math.ceil(target / 60);
     const updateCounter = () => {
       if (count < target) {
@@ -442,15 +309,12 @@
       }
     };
     const counterObserver = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        updateCounter();
-        counterObserver.unobserve(counterEl);
-      }
+      if (entries[0].isIntersecting) { updateCounter(); counterObserver.unobserve(counterEl); }
     });
     counterObserver.observe(counterEl);
   }
 
-  // Parallax suave
+  // ===== PARALLAX =====
   const parallaxBg = document.getElementById('parallax-bg');
   if (parallaxBg) {
     window.addEventListener('scroll', () => {
