@@ -88,7 +88,6 @@
       transform: translateY(-100%);
     }
 
-    /* Botão hambúrguer animado */
     .hamburger {
       display: inline-flex;
       flex-direction: column;
@@ -132,7 +131,19 @@
       z-index: 49;
     }
     #mobile-menu.open {
-      opacity: 1; padding: 1rem 1.5rem;
+      opacity: 1;
+      padding: 1rem 1.5rem;
+    }
+    /* Links do menu mobile */
+    #mobile-menu nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;  /* espaço uniforme entre links */
+    }
+    #mobile-menu nav a {
+      margin: 0;
+      padding: 0.5rem 0;
+      line-height: 1.4;
     }
 
     nav a { color: #3a2e33; opacity: 0.8; white-space: nowrap; }
@@ -166,14 +177,14 @@
     </button>
   </div>
   <div id="mobile-menu" class="md:hidden">
-    <nav class="flex flex-col space-y-3">
-      <a href="#inicio" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Início</a>
-      <a href="#servicos" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Serviços</a>
-      <a href="#destaque" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Destaque</a>
-      <a href="#avaliacoes" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Avaliações</a>
-      <a href="#instagram" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Instagram</a>
-      <a href="#sobre" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium">Sobre</a>
-      <a href="#localizacao" class="text-[#3a2e33] hover:text-[#d44e72] py-1 font-medium mb-2">Localização</a>
+    <nav>
+      <a href="#inicio" class="text-[#3a2e33] hover:text-[#d44e72] font-medium">Início</a>
+      <a href="#servicos" class="text-[#3a2e33] hover:text-[#d44e72] font-medium">Serviços</a>
+      <a href="#destaque" class="text-[#3a2e33] hover:text-[#d44e72] font-medium">Destaque</a>
+      <a href="#avaliacoes" class="text-[#3a2e33] hover:text-[#d44e72] font-medium">Avaliações</a>
+      <a href="#instagram" class="text-[#3a2e33] hover:text-[#d44e72] font-medium">Instagram</a>
+      <a href="#sobre" class="text-[#3a2e33] hover:text-[#d44e72] font-medium">Sobre</a>
+      <a href="#localizacao" class="text-[#3a2e33] hover:text-[#d44e72] font-medium">Localização</a>
       <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Quero%20agendar%20uma%20consulta%20na%20Cl%C3%ADnica%20Stefanie%20Viana." target="_blank" class="btn-primary text-center !py-2 w-full">Agendar pelo WhatsApp</a>
     </nav>
   </div>
@@ -288,7 +299,7 @@
 <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar." target="_blank" class="whatsapp-float" title="Agendar pelo WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-  // ===== MENU MOBILE =====
+  // ===== MENU MOBILE (ALTURA EXATA) =====
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
 
@@ -299,7 +310,10 @@
       mobileMenu.classList.remove('open');
     } else {
       mobileMenu.classList.add('open');
-      mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      // Pequeno delay para garantir que o layout seja calculado
+      requestAnimationFrame(() => {
+        mobileMenu.style.maxHeight = (mobileMenu.scrollHeight + 1) + 'px';
+      });
     }
   });
 
@@ -311,23 +325,22 @@
     });
   });
 
-  // ===== HEADER ESCONDER/MOSTRAR NA ROLAGEM =====
+  // ===== HEADER COM VISIBILIDADE INTELIGENTE =====
   let lastScrollTop = 0;
   const header = document.querySelector('header');
-
   window.addEventListener('scroll', () => {
-    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-    if (currentScroll > lastScrollTop && currentScroll > 100) {
+    const st = window.pageYOffset || document.documentElement.scrollTop;
+    if (st > lastScrollTop && st > 100) {
       header.classList.add('header-hidden');
       if (mobileMenu.classList.contains('open')) {
         menuToggle.classList.remove('active');
         mobileMenu.style.maxHeight = '0';
         mobileMenu.classList.remove('open');
       }
-    } else if (currentScroll < lastScrollTop) {
+    } else if (st < lastScrollTop) {
       header.classList.remove('header-hidden');
     }
-    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    lastScrollTop = st <= 0 ? 0 : st;
   }, { passive: true });
 
   // ===== FADE-IN =====
