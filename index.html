@@ -42,7 +42,6 @@
     }
     .whatsapp-float:hover { transform: scale(1.1); }
 
-
     @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
 
     .fade-in { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
@@ -104,10 +103,10 @@
     }
     .menu-backdrop.visible { opacity: 1; pointer-events: auto; }
 
-    /* Menu mobile – agora posicionado abaixo do header + urgência */
+    /* Menu mobile */
     #mobile-menu {
       position: fixed;
-      top: var(--full-header-height);   /* 80px header + 40px urgência = 120px */
+      top: var(--header-height);
       left: 0; right: 0;
       height: 0;
       overflow: hidden;
@@ -116,9 +115,19 @@
       border-radius: 0 0 16px 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
       z-index: 49;
       padding: 0 1.5rem;
+      will-change: height;
+      display: flex;
+      flex-direction: column;
     }
-    #mobile-menu.open { padding: 1.5rem; }
-    #mobile-menu nav { display: flex; flex-direction: column; gap: 0.75rem; }
+    #mobile-menu.open {
+      padding: 1.5rem;
+      max-height: calc(100vh - var(--header-height));
+      overflow-y: auto;
+    }
+    #mobile-menu nav {
+      display: flex; flex-direction: column; gap: 0.75rem;
+      flex: 1;
+    }
     #mobile-menu nav a {
       margin: 0; padding: 0.5rem 0; line-height: 1.4; color: #3a2e33;
       opacity: 0.8; white-space: nowrap;
@@ -129,10 +138,11 @@
     nav a:hover { color: #d44e72; opacity: 1; }
   </style>
 </head>
-<body class="antialiased" style="overflow-x: hidden; max-width: 100vw; --header-height: 80px; --full-header-height: 80px;">
+<body class="antialiased" style="overflow-x: hidden; max-width: 100vw; --header-height: 80px;">
 
+<div class="menu-backdrop" id="menu-backdrop"></div>
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8" style="max-width: 100vw; ">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8" style="max-width: 100vw;">
   <div class="max-w-7xl mx-auto h-full flex items-center justify-between relative">
     <div class="flex items-center gap-3">
       <img src="assets/images/logo.png" alt="Clínica Stefanie Viana" class="h-12 w-auto rounded-2xl flex-shrink-0" width="48" height="48" decoding="async" loading="eager" fetchpriority="high">
@@ -167,7 +177,7 @@
 </header>
 
 <main style="overflow-x: hidden; max-width: 100vw;">
-  <section id="inicio" class="hero-fullscreen fade-in">
+  <section id="inicio" class="hero-fullscreen fade-in" style="scroll-margin-top: 20px;">
     <div class="hero-bg-image" id="parallax-bg"></div>
     <div class="hero-overlay"></div>
     <div class="hero-content">
@@ -203,7 +213,7 @@
     </section>
   </div>
 
-  <section id="servicos" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+  <section id="servicos" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8" style="scroll-margin-top: 20px;">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nossos Serviços</h2>
     <p class="text-[#6b5b62] text-center mb-12">Cuidado integral para todas as fases da vida da mulher</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -213,7 +223,7 @@
     </div>
   </section>
 
-  <section id="destaque" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+  <section id="destaque" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8" style="scroll-margin-top: 20px;">
     <div class="glass-card-common p-8 md:p-10">
       <div class="flex flex-col md:flex-row gap-8 items-center">
         <div class="md:w-1/2"><span class="text-sm font-semibold uppercase tracking-wider text-[#d44e72]">Destaque da Semana</span><h2 class="text-3xl md:text-4xl font-bold mt-2">Dr. Jelson Batista</h2><p class="text-[#6b5b62] mt-1 text-lg">Clínico Geral · CRM 21146</p><div class="mt-6 grid grid-cols-2 gap-3 text-sm"><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Check-up</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Obesidade</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Hipertensão</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Diabetes</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Colesterol</span><span class="bg-[#d44e72]/5 rounded-full px-4 py-2">Gastrite</span></div><a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20com%20o%20Dr.%20Jelson%20Batista." target="_blank" class="btn-primary inline-block mt-8">Agendar com Dr. Jelson <i class="fab fa-whatsapp ml-2"></i></a></div>
@@ -222,7 +232,7 @@
     </div>
   </section>
 
-  <section id="avaliacoes" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+  <section id="avaliacoes" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8" style="scroll-margin-top: 20px;">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center">O que dizem nossas pacientes</h2>
     <p class="text-[#6b5b62] text-center mb-12">Depoimentos de quem confia na Clínica Stefanie Viana</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -232,7 +242,7 @@
     </div>
   </section>
 
-  <section id="instagram" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+  <section id="instagram" class="my-20 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8" style="scroll-margin-top: 20px;">
     <h2 class="text-3xl md:text-4xl font-bold mb-3 text-center text-[#3a2e33]">Nosso Instagram</h2>
     <p class="text-[#6b5b62] text-center mb-2">Fique por dentro das novidades da clínica</p>
     <div class="max-w-6xl mx-auto">
@@ -241,7 +251,7 @@
     <div class="text-center mt-6"><a href="https://www.instagram.com/clinicastefanieviana/" target="_blank" class="btn-outline"><i class="fab fa-instagram mr-2"></i> Seguir no Instagram</a></div>
   </section>
 
-  <section id="sobre" class="my-20 grid grid-cols-1 lg:grid-cols-2 gap-8 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+  <section id="sobre" class="my-20 grid grid-cols-1 lg:grid-cols-2 gap-8 fade-in max-w-7xl mx-auto px-4 md:px-6 lg:px-8" style="scroll-margin-top: 20px;">
     <div class="glass-card-common p-8">
       <h2 class="text-2xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-heart text-[#d44e72]"></i> Sobre a Clínica</h2>
       <p class="text-[#6b5b62] leading-relaxed mb-4">A <strong>Clínica Stefanie Viana</strong> é referência em saúde da mulher em Trairi-CE, com atendimento humanizado e equipamentos modernos.</p>
@@ -275,7 +285,7 @@
 <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar." target="_blank" class="whatsapp-float" title="Agendar pelo WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-  // ===== MENU MOBILE (ALTURA REAL + RESIZE) =====
+  // ===== MENU MOBILE PREMIUM =====
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   const menuBackdrop = document.getElementById('menu-backdrop');
@@ -285,7 +295,6 @@
     mobileMenu.classList.add('open');
     menuBackdrop.classList.add('visible');
     document.body.style.overflow = 'hidden';
-    
     mobileMenu.style.height = 'auto';
     const h = mobileMenu.scrollHeight;
     mobileMenu.style.height = '0px';
@@ -298,7 +307,6 @@
     menuToggle.classList.remove('active');
     menuBackdrop.classList.remove('visible');
     document.body.style.overflow = '';
-    
     mobileMenu.style.height = mobileMenu.scrollHeight + 'px';
     requestAnimationFrame(() => {
       mobileMenu.style.height = '0px';
@@ -309,13 +317,27 @@
   menuToggle.addEventListener('click', () => {
     mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
   });
-
   menuBackdrop.addEventListener('click', closeMenu);
 
-  document.querySelectorAll('#mobile-menu a').forEach(link => {
-    link.addEventListener('click', closeMenu);
+  // Scroll suave com offset preciso (corrige ancoragem)
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === '#') return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        const headerHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-height')) || 80;
+        const offset = headerHeight + 20; // 20px extra de folga
+        const targetPos = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+        // Fecha menu mobile se aberto
+        if (mobileMenu.classList.contains('open')) closeMenu();
+      }
+    });
   });
 
+  // Recalcular altura ao redimensionar
   window.addEventListener('resize', () => {
     if (mobileMenu.classList.contains('open')) {
       mobileMenu.style.height = 'auto';
@@ -323,11 +345,11 @@
     }
   });
 
-  // ===== HEADER ESCONDER/MOSTRAR =====
+  // Header esconde ao descer
   let lastScrollTop = 0;
   const header = document.querySelector('header');
   window.addEventListener('scroll', () => {
-    const st = window.pageYOffset || document.documentElement.scrollTop;
+    const st = window.scrollY || document.documentElement.scrollTop;
     if (st > lastScrollTop && st > 100) {
       header.classList.add('header-hidden');
       if (mobileMenu.classList.contains('open')) closeMenu();
@@ -337,7 +359,7 @@
     lastScrollTop = st <= 0 ? 0 : st;
   }, { passive: true });
 
-  // ===== FADE-IN =====
+  // Fade-in
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -348,7 +370,7 @@
   }, { threshold: 0.2 });
   document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-  // ===== CONTADOR =====
+  // Contador
   const counterEl = document.getElementById('patient-counter');
   if (counterEl) {
     const target = 500; let count = 0;
@@ -367,7 +389,7 @@
     counterObserver.observe(counterEl);
   }
 
-  // ===== PARALLAX OTIMIZADO =====
+  // Parallax otimizado
   const parallaxBg = document.getElementById('parallax-bg');
   if (parallaxBg) {
     let ticking = false;
