@@ -109,10 +109,10 @@
     }
     .menu-backdrop.visible { opacity: 1; pointer-events: auto; }
 
-    /* Menu mobile – agora com altura automática e scroll interno se necessário */
+    /* Menu mobile – agora posicionado abaixo do header + urgência */
     #mobile-menu {
       position: fixed;
-      top: var(--full-header-height);
+      top: var(--full-header-height);   /* 80px header + 40px urgência = 120px */
       left: 0; right: 0;
       height: 0;
       overflow: hidden;
@@ -121,19 +121,9 @@
       border-radius: 0 0 16px 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
       z-index: 49;
       padding: 0 1.5rem;
-      will-change: height;
-      display: flex;
-      flex-direction: column;
     }
-    #mobile-menu.open {
-      padding: 1.5rem;
-      overflow-y: auto;           /* permite scroll se o conteúdo for maior que a tela */
-      max-height: calc(100vh - var(--full-header-height)); /* limite de altura */
-    }
-    #mobile-menu nav {
-      display: flex; flex-direction: column; gap: 0.75rem;
-      flex: 1;
-    }
+    #mobile-menu.open { padding: 1.5rem; }
+    #mobile-menu nav { display: flex; flex-direction: column; gap: 0.75rem; }
     #mobile-menu nav a {
       margin: 0; padding: 0.5rem 0; line-height: 1.4; color: #3a2e33;
       opacity: 0.8; white-space: nowrap;
@@ -293,7 +283,7 @@
 <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar." target="_blank" class="whatsapp-float" title="Agendar pelo WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-  // ===== MENU MOBILE - ALTURA REAL, RESIZE, SCROLL INTERNO =====
+  // ===== MENU MOBILE (ALTURA REAL + RESIZE) =====
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   const menuBackdrop = document.getElementById('menu-backdrop');
@@ -303,8 +293,7 @@
     mobileMenu.classList.add('open');
     menuBackdrop.classList.add('visible');
     document.body.style.overflow = 'hidden';
-
-    // Reset para medir corretamente
+    
     mobileMenu.style.height = 'auto';
     const h = mobileMenu.scrollHeight;
     mobileMenu.style.height = '0px';
@@ -317,7 +306,7 @@
     menuToggle.classList.remove('active');
     menuBackdrop.classList.remove('visible');
     document.body.style.overflow = '';
-
+    
     mobileMenu.style.height = mobileMenu.scrollHeight + 'px';
     requestAnimationFrame(() => {
       mobileMenu.style.height = '0px';
