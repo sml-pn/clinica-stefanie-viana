@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" style="scroll-behavior: smooth; scroll-padding-top: 120px;">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -45,6 +45,7 @@
     .urgency-bar {
       background: #d44e72; color: white; text-align: center; padding: 10px;
       font-weight: 600; font-size: 0.95rem; letter-spacing: 0.3px;
+      height: 40px; display: flex; align-items: center; justify-content: center;
     }
 
     @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); } }
@@ -56,8 +57,8 @@
     .hero-fullscreen {
       position: relative; min-height: 90vh; display: flex; align-items: center;
       justify-content: center; overflow: hidden;
-      margin-top: calc(-1 * (var(--header-height) + var(--urgency-height)));
-      padding: calc(var(--header-height) + var(--urgency-height) + 2rem) 1rem 4rem;
+      margin-top: calc(-1 * var(--full-header-height));
+      padding: calc(var(--full-header-height) + 2rem) 1rem 4rem;
       text-align: center; background-color: #fdfbf9; transform: translateZ(0);
     }
     @media (min-width: 768px) { .hero-fullscreen { min-height: 100vh; padding-bottom: 6rem; } }
@@ -83,18 +84,15 @@
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
       transition: transform 0.3s ease;
       overflow: visible;
+      height: var(--header-height);
     }
-    header.header-hidden {
-      transform: translateY(-100%);
-    }
+    header.header-hidden { transform: translateY(-100%); }
 
     /* Botão hambúrguer animado */
     .hamburger {
-      display: inline-flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 24px; height: 18px;
-      cursor: pointer; position: relative; background: none; border: none; padding: 0;
+      display: inline-flex; flex-direction: column; justify-content: space-between;
+      width: 24px; height: 18px; cursor: pointer; position: relative; background: none;
+      border: none; padding: 0;
     }
     .hamburger span {
       display: block; width: 100%; height: 2px; background: #3a2e33;
@@ -104,19 +102,17 @@
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-    /* Backdrop escuro (atrás do menu mobile) */
+    /* Backdrop escuro */
     .menu-backdrop {
       position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 48;
       opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
     }
-    .menu-backdrop.visible {
-      opacity: 1; pointer-events: auto;
-    }
+    .menu-backdrop.visible { opacity: 1; pointer-events: auto; }
 
-    /* Menu mobile */
+    /* Menu mobile – agora posicionado abaixo do header + urgência */
     #mobile-menu {
       position: fixed;
-      top: var(--header-height);
+      top: var(--full-header-height);   /* 80px header + 40px urgência = 120px */
       left: 0; right: 0;
       height: 0;
       overflow: hidden;
@@ -126,12 +122,8 @@
       z-index: 49;
       padding: 0 1.5rem;
     }
-    #mobile-menu.open {
-      padding: 1.5rem;
-    }
-    #mobile-menu nav {
-      display: flex; flex-direction: column; gap: 0.75rem;
-    }
+    #mobile-menu.open { padding: 1.5rem; }
+    #mobile-menu nav { display: flex; flex-direction: column; gap: 0.75rem; }
     #mobile-menu nav a {
       margin: 0; padding: 0.5rem 0; line-height: 1.4; color: #3a2e33;
       opacity: 0.8; white-space: nowrap;
@@ -142,14 +134,13 @@
     nav a:hover { color: #d44e72; opacity: 1; }
   </style>
 </head>
-<body class="antialiased" style="overflow-x: hidden; max-width: 100vw; --header-height: 80px; --urgency-height: 40px;">
+<body class="antialiased" style="overflow-x: hidden; max-width: 100vw; --header-height: 80px; --full-header-height: 120px;">
 
 <div class="urgency-bar">⚠️ Últimas vagas para esta semana – agende agora e garanta seu horário!</div>
 
-<!-- Backdrop do menu mobile -->
 <div class="menu-backdrop" id="menu-backdrop"></div>
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8" style="max-width: 100vw; height: var(--header-height);">
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-black/5 py-3 px-4 md:px-8" style="max-width: 100vw; margin-top: 40px;">
   <div class="max-w-7xl mx-auto h-full flex items-center justify-between relative">
     <div class="flex items-center gap-3">
       <img src="assets/images/logo.png" alt="Clínica Stefanie Viana" class="h-12 w-auto rounded-2xl flex-shrink-0" width="48" height="48" decoding="async" loading="eager" fetchpriority="high">
@@ -166,9 +157,7 @@
       <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar%20uma%20consulta." target="_blank" class="btn-primary text-sm !py-2 !px-5 ml-4">Agendar <i class="fab fa-whatsapp ml-2"></i></a>
     </nav>
     <button id="menu-toggle" class="md:hidden hamburger" aria-label="Menu">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
   </div>
   <div id="mobile-menu" class="md:hidden">
@@ -294,7 +283,7 @@
 <a href="https://wa.me/5585981497934?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20agendar." target="_blank" class="whatsapp-float" title="Agendar pelo WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
 <script>
-  // ===== MENU MOBILE - NÍVEL PREMIUM =====
+  // ===== MENU MOBILE (ALTURA REAL + RESIZE) =====
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   const menuBackdrop = document.getElementById('menu-backdrop');
@@ -305,7 +294,6 @@
     menuBackdrop.classList.add('visible');
     document.body.style.overflow = 'hidden';
     
-    // Animar altura com valor exato
     mobileMenu.style.height = 'auto';
     const h = mobileMenu.scrollHeight;
     mobileMenu.style.height = '0px';
@@ -319,7 +307,6 @@
     menuBackdrop.classList.remove('visible');
     document.body.style.overflow = '';
     
-    // Animar fechamento
     mobileMenu.style.height = mobileMenu.scrollHeight + 'px';
     requestAnimationFrame(() => {
       mobileMenu.style.height = '0px';
@@ -327,23 +314,16 @@
     });
   }
 
-  menuToggle.addEventListener('click', function () {
-    if (mobileMenu.classList.contains('open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
   });
 
-  // Fechar ao clicar no backdrop
   menuBackdrop.addEventListener('click', closeMenu);
 
-  // Fechar ao clicar em qualquer link do menu
   document.querySelectorAll('#mobile-menu a').forEach(link => {
     link.addEventListener('click', closeMenu);
   });
 
-  // Recalcular altura ao girar a tela
   window.addEventListener('resize', () => {
     if (mobileMenu.classList.contains('open')) {
       mobileMenu.style.height = 'auto';
@@ -351,7 +331,7 @@
     }
   });
 
-  // ===== HEADER INTELIGENTE =====
+  // ===== HEADER ESCONDER/MOSTRAR =====
   let lastScrollTop = 0;
   const header = document.querySelector('header');
   window.addEventListener('scroll', () => {
@@ -398,14 +378,14 @@
   // ===== PARALLAX OTIMIZADO =====
   const parallaxBg = document.getElementById('parallax-bg');
   if (parallaxBg) {
-    let parallaxTicking = false;
+    let ticking = false;
     window.addEventListener('scroll', () => {
-      if (!parallaxTicking) {
+      if (!ticking) {
         requestAnimationFrame(() => {
           parallaxBg.style.transform = `translateZ(0) translateY(${window.scrollY * 0.15}px)`;
-          parallaxTicking = false;
+          ticking = false;
         });
-        parallaxTicking = true;
+        ticking = true;
       }
     });
   }
